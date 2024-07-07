@@ -5,10 +5,18 @@ package Logic;
  */
 public class PlayerInfo {
     private final int[] stats;
-
+    private static PlayerInfo instance;
     public PlayerInfo(){
         stats = new int[4];
-        stats[0] = 250;
+        stats[0] = 5550;
+        instance = this;
+    }
+
+    public static PlayerInfo getInstance() {
+        if (instance == null) {
+            instance = new PlayerInfo();
+        }
+        return instance;
     }
 
     /*
