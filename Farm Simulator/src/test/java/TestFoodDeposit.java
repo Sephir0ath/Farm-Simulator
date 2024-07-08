@@ -1,11 +1,5 @@
 import Exceptions.*;
-import Logic.Animal;
-import Logic.Cow;
-import Logic.Apple;
-import Logic.FoodDeposit;
-import Logic.FoodTypes;
-import Logic.Wheat;
-import Logic.Habitat;
+import Logic.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

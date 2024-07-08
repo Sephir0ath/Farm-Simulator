@@ -1,8 +1,6 @@
 import java.awt.*;
 
-import Logic.Animal;
-import Logic.Cow;
-import Logic.HitboxAnimal;
+import Logic.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

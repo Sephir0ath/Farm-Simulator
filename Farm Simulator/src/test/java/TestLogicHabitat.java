@@ -1,9 +1,5 @@
-import Exceptions.AnimalTypeDifferentFromHabitatTypeException;
-import Exceptions.FullCapacityException;
-import Logic.Animal;
-import Logic.Cow;
-import Logic.Pig;
-import Logic.Habitat;
+import Exceptions.*;
+import Logic.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
