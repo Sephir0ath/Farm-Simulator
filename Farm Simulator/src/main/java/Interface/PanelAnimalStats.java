@@ -3,6 +3,7 @@ package Interface;
 import Logic.*;
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 /**
  * Clase que representa el panel que contiene las stats del animal.
@@ -14,6 +15,8 @@ public class PanelAnimalStats extends JPanel {
     private HitboxAnimal hitboxAnimal;
     private Animal animal;
     private Habitat habitat;
+    private AnimalTypes habitatType;
+    private FoodTypes depositType;
 
     /**
      * Método constructor
@@ -23,6 +26,8 @@ public class PanelAnimalStats extends JPanel {
      * @param habitat el habitat donde está el animal.
      */
     public PanelAnimalStats(Rectangle rectangle, Point positionMouseToPanel, Animal animal, Habitat habitat, HitboxAnimal hitboxAnimal) {
+        this.habitatType = habitat.getHabitatType();
+        this.depositType = habitat.getFoodDeposit().getDepositType();
         this.layeredPane = Window.frame().getLayeredPane();
         this.rectangle = rectangle;
         this.animal = animal;
@@ -39,7 +44,7 @@ public class PanelAnimalStats extends JPanel {
         this.setLayout(new BorderLayout());
         JLabel labelFood = new JLabel("          " + animal.getActualFood());
         this.add(labelFood);
-        AnimalTradeButton sellAnimal = new AnimalTradeButton("", this, animal, habitat, hitboxanimal);
+        AnimalTradeButton sellAnimal = new AnimalTradeButton("", this, animal, habitat, hitboxAnimal);
         sellAnimal.setPreferredSize(new Dimension(100,25));
         this.add(sellAnimal, BorderLayout.SOUTH);
         sellAnimal.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("sellAnimalButton.png"))));
