@@ -8,7 +8,6 @@ import java.awt.*;
 public class PanelStats extends JPanel {
     PanelStatsText panelMoney;
     PanelStatsText panelAnimalQuantity;
-    PanelStatsText panelHabitatQuantity;
     PanelStatsText panelFoodQuantity;
 
     public PanelStats(PlayerInfo playerInfo){
@@ -20,19 +19,16 @@ public class PanelStats extends JPanel {
         panelMoney.setPreferredSize(new Dimension(50, 50));
 
         panelAnimalQuantity = new PanelStatsText("C. de Animales:", playerInfo, 1);
-        panelHabitatQuantity = new PanelStatsText("C. de Habitats:", playerInfo, 2);
-        panelFoodQuantity = new PanelStatsText("C. de Habitats:", playerInfo, 3);
+        panelFoodQuantity = new PanelStatsText("C. de Comida Total:", playerInfo, 3);
 
         this.add(panelMoney);
         this.add(panelAnimalQuantity);
-        this.add(panelHabitatQuantity);
         this.add(panelFoodQuantity);
     }
 
     public void updateStatsPanels(PlayerInfo playerInfo){
         panelMoney.updateStatsPanel(playerInfo);
         panelAnimalQuantity.updateStatsPanel(playerInfo);
-        panelHabitatQuantity.updateStatsPanel(playerInfo);
         panelFoodQuantity.updateStatsPanel(playerInfo);
     }
 

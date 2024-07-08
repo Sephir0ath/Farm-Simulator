@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class PanelStatsText extends JPanel {
     private String statDescription;
-    private int statValue;
+    private double statValue;
     private int statIndex;
 
     public PanelStatsText(String statDescription, PlayerInfo playerInfo, int value){
@@ -29,6 +29,6 @@ public class PanelStatsText extends JPanel {
 
         g.setColor(Color.BLACK);
         g.setFont(new Font("Arial", Font.BOLD, 10));
-        g.drawString(statDescription + " " + statValue, 10, 30);
+        g.drawString(statDescription + " " + (int)statValue, 10, 30);
     }
 }
