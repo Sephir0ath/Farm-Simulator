@@ -12,6 +12,7 @@ public class PanelAnimalBuyMenu extends JPanel {
     private CowButton cowButton;
     public PanelAnimalBuyMenu(){
         super();
+        setPreferredSize(new Dimension(228,515));
         setLayout(new GridLayout(3, 2));
         add(new AnimalBuyButton(AnimalTypes.VACAS));
         add(new AnimalBuyButton(AnimalTypes.GALLINA));

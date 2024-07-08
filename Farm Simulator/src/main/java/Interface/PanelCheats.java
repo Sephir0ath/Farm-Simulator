@@ -20,7 +20,8 @@ public class PanelCheats extends JPanel {
      */
     public PanelCheats(){
         super();
-        this.setLayout(new GridLayout(3, 2));
+        setPreferredSize(new Dimension(228,515));
+        setLayout(new GridLayout(3, 2));
 
         addMoneyToPlayer = new JButton("Añadir dinero");
         resetAllHabitats = new JButton("Resetear habitats");

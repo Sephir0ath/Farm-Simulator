@@ -20,11 +20,10 @@ public class PanelStats extends JPanel {
      */
     public PanelStats(PlayerInfo playerInfo) {
         super();
-        setBackground(Color.lightGray);
-        setLayout(new GridLayout(1, 5));
+        setLayout(new GridLayout(1, 4));
+        setPreferredSize(new Dimension(1188,50));
 
         panelMoney = new PanelStatsText("dinero", playerInfo, 0);
-        panelMoney.setPreferredSize(new Dimension(50, 50));
         panelAnimalQuantity = new PanelStatsText("animales", playerInfo, 1);
         panelFoodQuantity = new PanelStatsText("comida", playerInfo, 3);
         achievementsButton = new AchievementsButton();
