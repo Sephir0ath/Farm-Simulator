@@ -78,7 +78,7 @@ public class PanelAnimalStats extends JPanel {
     }
 
     /**
-     *
+     * Override de paintComponent, pinta el panel.
      * @param g the <code>Graphics</code> object to protect
      */
 
