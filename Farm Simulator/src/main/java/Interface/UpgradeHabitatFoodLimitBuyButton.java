@@ -21,7 +21,7 @@ public class UpgradeHabitatFoodLimitBuyButton extends JButton {
      * Constructor de la clase, inicializa un scheduler el cual se encarga de ejcutar el comando de mejorar la cantidad maxima de comida de un habitat
      */
     public UpgradeHabitatFoodLimitBuyButton(){
-        super("Aumentar capacidad comida " + counter*100 + "$");
+        super("+ capacidad comida " + counter*100 + "$");
         this.isThisButtonPressed = false;
 
         this.scheduler = new ScheduledThreadPoolExecutor(1);

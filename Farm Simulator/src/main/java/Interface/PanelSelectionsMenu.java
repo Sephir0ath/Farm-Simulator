@@ -21,13 +21,13 @@ public class PanelSelectionsMenu extends JPanel {
     public PanelSelectionsMenu(){
         super();
         setOpaque(false);
+        cardLayout = new CardLayout();
+        setLayout(cardLayout);
         panelAnimalBuyMenu = new PanelAnimalBuyMenu();
         panelFoodBuyMenu = new PanelFoodBuyMenu();
         panelUpgrades = new PanelUpgrades();
         panelCheats = new PanelCheats();
-        cardLayout = new CardLayout();
         panelDefault = new PanelDefault();
-        setLayout(cardLayout);
         instance = this;
 
         add(panelDefault, "Nothing");

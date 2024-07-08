@@ -22,7 +22,7 @@ public class UpgradeHabitatAnimalSizeBuyButton extends JButton {
      * Constructor de la clase, inicializa un scheduler el cual se encarga de ejcutar el comando de mejorar el tamaño de un habitat
      */
     public UpgradeHabitatAnimalSizeBuyButton(){
-        super("Aumentar Capacidad de Animal " + counter*100 + "$");
+        super("+ Capacidad de Animal " + counter*100 + "$");
         this.isThisButtonPressed = false;
 
         this.scheduler = new ScheduledThreadPoolExecutor(1);

@@ -21,11 +21,11 @@ public class FoodBuyButton extends JButton {
 
     public FoodBuyButton(FoodTypes foodType){
         super(foodType.getFood() + " " + foodType.getPrice() + "$");
-        this.typeOfFood = foodType;
-        this.isThisButtonPressed = false;
+        typeOfFood = foodType;
+        isThisButtonPressed = false;
 
 
-        this.scheduler = new ScheduledThreadPoolExecutor(1);
+        scheduler = new ScheduledThreadPoolExecutor(1);
         scheduler.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {

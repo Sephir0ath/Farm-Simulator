@@ -10,7 +10,7 @@ public class PanelHabitat extends JPanel {
     private Habitat habitat;
     private HitboxAnimal hitboxAnimal = null;
     public PanelHabitat(){
-        this.setOpaque(false); // MUY IMPORTANTE
+        setOpaque(false);
         habitat = new Habitat();
     }
 

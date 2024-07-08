@@ -20,7 +20,7 @@ public class PanelMenu extends JPanel {
 
         panelSelectionsMenu = new PanelSelectionsMenu();
         panelSelections = new PanelSelections();
-        this.add(panelSelectionsMenu, BorderLayout.CENTER);
-        this.add(panelSelections, BorderLayout.NORTH);
+        add(panelSelectionsMenu, BorderLayout.CENTER);
+        add(panelSelections, BorderLayout.NORTH);
     }
 }

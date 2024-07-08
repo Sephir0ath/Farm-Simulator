@@ -53,6 +53,6 @@ public class PanelCheats extends JPanel {
         });
         add(addMoneyToPlayer);
         add(resetAllHabitats);
-        add(resetEverything);;
+        add(resetEverything);
     }
 }
