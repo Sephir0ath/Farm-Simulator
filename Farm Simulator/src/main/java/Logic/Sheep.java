@@ -9,6 +9,6 @@ public class Sheep extends Animal{
 
     @Override
     public AnimalTypes getAnimalType() {
-        return null;
+        return AnimalTypes.OVEJA;
     }
 }

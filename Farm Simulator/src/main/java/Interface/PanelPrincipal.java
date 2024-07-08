@@ -14,8 +14,6 @@ public class PanelPrincipal extends JPanel {
     private PanelStats panelStats;
     private PanelMenu panelMenu;
     private PanelGame panelGame;
-    private int a;
-    private int b;
 
     public PanelPrincipal(){
         super();

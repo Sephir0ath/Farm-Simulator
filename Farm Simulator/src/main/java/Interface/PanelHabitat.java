@@ -53,7 +53,10 @@ public class PanelHabitat extends JPanel {
                         (int) location.getY(),
                         null);
                 case CERDO -> g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("Cerdo.png")).getImage(), (int) location.getX(), (int) location.getY(), null);
-                case OVEJA, CABALLO, CABRA, GALLINA -> {}
+                case GALLINA -> g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("Pollo.png")).getImage(), (int) location.getX(), (int) location.getY(), null);
+                case CABRA -> g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("Cabra.png")).getImage(), (int) location.getX(), (int) location.getY(), null);
+                case OVEJA -> g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("Oveja.png")).getImage(), (int) location.getX(), (int) location.getY(), null);
+                case CABALLO -> g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("Caballo.png")).getImage(), (int) location.getX(), (int) location.getY(), null);
             }
         }
     }

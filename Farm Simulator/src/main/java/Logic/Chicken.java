@@ -9,6 +9,6 @@ public class Chicken extends Animal{
 
     @Override
     public AnimalTypes getAnimalType() {
-        return null;
+        return AnimalTypes.GALLINA;
     }
 }

@@ -1,5 +1,7 @@
 package Interface;
 
+import Logic.*;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,11 +13,11 @@ public class PanelAnimalBuyMenu extends JPanel {
         this.setLayout(new GridLayout(3, 2));
         cowButton = new CowButton();
 
-        this.add(new CowButton());
-        this.add(new ChickenButton());
-        this.add(new PigButton());
-        this.add(new GoatButton());
-        this.add(new SheepButton());
-        this.add(new HorseButton());
+        this.add(new AnimalBuyButton(AnimalTypes.VACAS));
+        this.add(new AnimalBuyButton(AnimalTypes.GALLINA));
+        this.add(new AnimalBuyButton(AnimalTypes.CERDO));
+        this.add(new AnimalBuyButton(AnimalTypes.CABRA));
+        this.add(new AnimalBuyButton(AnimalTypes.OVEJA));
+        this.add(new AnimalBuyButton(AnimalTypes.CABALLO));
     }
 }
