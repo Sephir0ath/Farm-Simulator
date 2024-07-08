@@ -36,8 +36,10 @@
  ## Diagrama de casos
  ![Diagrama](https://github.com/Kingsephir/Farm-Simulator/blob/main/CaseDiagram.png)
 
+
  ## Diagrama UML
  ![Diagrama](https://github.com/Kingsephir/Farm-Simulator/blob/main/FarmSimulatorUML.png)
+
 
  ## Interfaz Grafica
  ![Imagen](https://github.com/Kingsephir/Farm-Simulator/blob/main/ImagenInterfaz.png)
