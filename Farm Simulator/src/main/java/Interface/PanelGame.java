@@ -164,7 +164,7 @@ public class PanelGame extends JPanel {
                     if (hitbox.hitboxIsVisible()) {
                         if (hitbox.getHitbox().contains(mouseLocationRelativeToPanel) && PanelGame.getInstance().contains(mouseLocationRelativeToPanel)) {
                             if (panelanimalstats == null) {
-                                panelanimalstats = new PanelAnimalStats(hitbox.getHitbox(), mouseLocationRelativeToPanel, animal, habitat);
+                                panelanimalstats = new PanelAnimalStats(hitbox.getHitbox(), mouseLocationRelativeToPanel, animal, habitat, hitbox);
                                 panelanimalstats.CreateInterfazAnimal();
                             }
                         }

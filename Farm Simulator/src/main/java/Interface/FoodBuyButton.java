@@ -88,8 +88,10 @@ public class FoodBuyButton extends JButton {
         this.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PanelGame.getInstance().setSelectionMode(true);
-                isThisButtonPressed = true;
+                if (!PanelGame.getInstance().getSelectionMode()) {
+                    PanelGame.getInstance().setSelectionMode(true);
+                    isThisButtonPressed = true;
+                }
             }
         });
     }

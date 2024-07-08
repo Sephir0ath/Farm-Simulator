@@ -10,21 +10,23 @@ import java.awt.*;
 public class PanelAnimalStats extends JPanel {
     private final Point positionMouseToPanel;
     private JLayeredPane layeredPane;
-    private Rectangle hitboxanimal;
+    private Rectangle rectangle;
+    private HitboxAnimal hitboxAnimal;
     private Animal animal;
     private Habitat habitat;
 
     /**
      * Método constructor
-     * @param hitboxanimal hitbox del animal del panel.
+     * @param rectangle hitbox del animal del panel.
      * @param positionMouseToPanel posición del animal.
      * @param animal el animal del que se verán las stasts-
      * @param habitat el habitat donde está el animal.
      */
-    public PanelAnimalStats(Rectangle hitboxanimal, Point positionMouseToPanel, Animal animal, Habitat habitat) {
+    public PanelAnimalStats(Rectangle rectangle, Point positionMouseToPanel, Animal animal, Habitat habitat, HitboxAnimal hitboxAnimal) {
         this.layeredPane = Window.frame().getLayeredPane();
-        this.hitboxanimal = hitboxanimal;
+        this.rectangle = rectangle;
         this.animal = animal;
+        this.hitboxAnimal = hitboxAnimal;
         this.habitat = habitat;
         this.positionMouseToPanel = positionMouseToPanel;
     }
@@ -38,11 +40,15 @@ public class PanelAnimalStats extends JPanel {
         this.add(new JLabel("Hola"), BorderLayout.CENTER);
         JLabel labelFood = new JLabel("Comida: " + animal.getActualFood());
         this.add(labelFood);
-        this.add(new AnimalTradeButton("Vender: " + animal.calculateSellValue(), this, animal, habitat, hitboxanimal), BorderLayout.SOUTH);
+        this.add(new AnimalTradeButton("Vender: " + animal.calculateSellValue(), this, animal, habitat, hitboxAnimal), BorderLayout.SOUTH);
         layeredPane.add(this, JLayeredPane.POPUP_LAYER);
 
         layeredPane.revalidate();
         layeredPane.repaint();
+    }
+
+    public PanelAnimalStats getThis(){
+        return this;
     }
 
     /**
