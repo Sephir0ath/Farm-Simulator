@@ -10,7 +10,7 @@ public class PanelSelections extends JPanel {
     private JButton buttonAnimalMenuSection;
     private JButton buttonFoodMenuSection;
     private JButton buttonGoBack;
-
+    private JButton buttonUpgrades;
     public PanelSelections(){
         super();
         setPreferredSize(new Dimension(200, 100));
@@ -22,8 +22,8 @@ public class PanelSelections extends JPanel {
         buttonAnimalMenuSection.setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonAnimals.png")));
         buttonFoodMenuSection = new JButton();
         buttonFoodMenuSection.setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonFood.png")));
-        buttonGoBack = new JButton();
-        buttonGoBack.setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonGoback.png")));;
+        buttonUpgrades = new JButton();
+        buttonUpgrades.setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonGoback.png")));
 
         buttonAnimalMenuSection.addActionListener(new ActionListener() {
             @Override
@@ -39,10 +39,10 @@ public class PanelSelections extends JPanel {
             }
         });
 
-        buttonGoBack.addActionListener(new ActionListener() {
+        buttonUpgrades.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PanelBuyMenu.getInstance().showPanel("Nothing");
+                PanelBuyMenu.getInstance().showPanel("Upgrades");;
             }
         });
 
@@ -56,7 +56,7 @@ public class PanelSelections extends JPanel {
         this.add(buttonAnimalMenuSection);
         this.add(buttonCheatsMenuSection);
         this.add(buttonFoodMenuSection);
-        this.add(buttonGoBack);
+        this.add(buttonUpgrades);
     }
 
     @Override

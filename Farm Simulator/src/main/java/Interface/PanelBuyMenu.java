@@ -10,6 +10,7 @@ public class PanelBuyMenu extends JPanel {
     private JPanel panelDefault;
     private static PanelBuyMenu instance;
     private CardLayout cardLayout;
+    private PanelUpgrades panelUpgrades;
 
     public PanelBuyMenu(){
         super();
@@ -19,6 +20,7 @@ public class PanelBuyMenu extends JPanel {
         this.panelCheats = new PanelCheats();
         this.cardLayout = new CardLayout();
         this.panelDefault = new JPanel();
+        this.panelUpgrades = new PanelUpgrades();
         this.setLayout(cardLayout);
         instance = this;
 
@@ -26,6 +28,7 @@ public class PanelBuyMenu extends JPanel {
         this.add(panelAnimalBuyMenu, "Animals");
         this.add(panelFoodBuyMenu, "Food");
         this.add(panelCheats, "Cheats");
+        this.add(panelUpgrades, "Upgrades");
     }
 
     public void showPanel(String panelName){

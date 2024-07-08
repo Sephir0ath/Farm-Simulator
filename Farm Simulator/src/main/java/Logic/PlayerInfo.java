@@ -6,6 +6,7 @@ package Logic;
 public class PlayerInfo {
     private final double[] stats;
     private static PlayerInfo instance;
+    private int MAX_MONEY = 10000;
     public PlayerInfo(){
         stats = new double[4];
         stats[0] = 5550;

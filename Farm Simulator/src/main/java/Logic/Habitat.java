@@ -9,8 +9,8 @@ import java.util.ArrayList;
  */
 public class Habitat {
     private boolean isActive;
-    private final int MAX_CAPACITY = 5;
-    private final int INITIAL_FOOD = 10;
+    private int MAX_CAPACITY = 5;
+    private int MAX_FOOD = 50;
     private int actualCapacity;
     private AnimalTypes habitatType;
     private ArrayList<Animal> animalsInTheHabitat;
@@ -22,7 +22,7 @@ public class Habitat {
     public Habitat(){
         this.isActive = false;
         this.animalsInTheHabitat = new ArrayList<>();
-        this.foodReserve = INITIAL_FOOD;
+        this.foodReserve = MAX_FOOD;
         this.habitatType = null;
         this.actualCapacity = 0;
     }
@@ -121,6 +121,14 @@ public class Habitat {
                 animalsInTheHabitat.remove(animalsInTheHabitat.get(i));
             }
         }
+    }
+
+    public void increaseAnimalLimit(){
+        this.MAX_CAPACITY++;
+    }
+
+    public void increaseMaxFoodLimit(){
+        this.MAX_FOOD += 10;
     }
 
     public int getFoodReserve(){
