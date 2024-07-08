@@ -30,6 +30,7 @@ public class PanelCheats extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PlayerInfo.getInstance().addToStat(0, 1000);
+                PlayerInfo.getInstance().addToStat(4, 1000);
             }
         });
 

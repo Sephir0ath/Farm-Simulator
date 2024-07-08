@@ -16,12 +16,13 @@ import java.util.ArrayList;
 public class PlayerInfo {
     private final double[] stats;
     private static PlayerInfo instance;
-    private int MAX_MONEY = 10000;
+    private int MAX_MONEY = 50000;
     private final ArrayList<ObserverInterface> observers;
     public PlayerInfo(){
         stats = new double[5];
         stats[0] = 5550;
         instance = this;
+        observers = new ArrayList<>();
     }
 
     public static PlayerInfo getInstance() {
