@@ -5,21 +5,17 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PanelAnimalStats extends JPanel {
-    private Point positionMouseToPanel;
-    private Timer timer;
+    private final Point positionMouseToPanel;
     public JLayeredPane layeredPane;
     public Rectangle hitboxanimal;
-    public Animal animal;
 
-    public PanelAnimalStats(Rectangle hitboxanimal, Point positionMouseToPanel, Animal animal) {
+    public PanelAnimalStats(Rectangle hitboxanimal, Point positionMouseToPanel) {
         this.layeredPane = Window.frame().getLayeredPane();
         this.hitboxanimal = hitboxanimal;
-        this.animal = animal;
         this.positionMouseToPanel = positionMouseToPanel;
     }
 
     public void CreateInterfazAnimal() {
-        System.out.println("Creado");
         this.setBounds((int) positionMouseToPanel.getX(), (int) positionMouseToPanel.getY()-47, 200, 100);
         this.setLayout(new BorderLayout());
         this.add(new JLabel("Hola"), BorderLayout.CENTER);
@@ -37,6 +33,5 @@ public class PanelAnimalStats extends JPanel {
         layeredPane.remove(this);
         layeredPane.revalidate();
         layeredPane.repaint();
-        System.out.println("Borrado");
     }
 }

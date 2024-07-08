@@ -16,7 +16,7 @@ public class PanelGame extends JPanel {
     private PanelHabitat clickedHabitat;
     private final Cielo cielo;
     private static PanelAnimalStats panelanimalstats = null;
-    public PanelGame(){
+    public PanelGame() {
         super();
         habitats = new ArrayList<>();
         setLayout(new GridLayout(4, 3));
@@ -44,7 +44,7 @@ public class PanelGame extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Point mouseCoordenates = e.getPoint();
-                if (selectionMode){
+                if (selectionMode) {
                     setClickedHabitat(mouseCoordenates);
                     selectionMode = false;
                 }
@@ -59,12 +59,12 @@ public class PanelGame extends JPanel {
         return instance;
     }
 
-    public void updateAnimalQuantity(){
+    public void updateAnimalQuantity() {
         int counter = 0;
-        ArrayList<PanelHabitat> habitats =  this.getHabitats();
+        ArrayList<PanelHabitat> habitats = this.getHabitats();
         for (int i = 0; i < habitats.size(); i++) {
             counter += habitats.get(i).getLogicHabitat().getAnimalQuantity();
-            for (int j = 0; j < habitats.get(i).getLogicHabitat().getAnimalsInTheHabitat().size(); j++){
+            for (int j = 0; j < habitats.get(i).getLogicHabitat().getAnimalsInTheHabitat().size(); j++) {
                 habitats.get(i).getLogicHabitat().getAnimalsInTheHabitat().get(j).giveMoneyEachSecond();
             }
         }
@@ -82,55 +82,57 @@ public class PanelGame extends JPanel {
         }
     }
 
-    public PanelHabitat getClickedHabitat(){
+    public PanelHabitat getClickedHabitat() {
         return clickedHabitat;
     }
 
-    public void setClickedHabitatToNull(){
+    public void setClickedHabitatToNull() {
         clickedHabitat = null;
     }
 
-    public void setSelectionMode(boolean value){
+    public void setSelectionMode(boolean value) {
         selectionMode = value;
     }
 
-    public boolean getSelectionMode(){
+    public boolean getSelectionMode() {
         return selectionMode;
     }
 
-    public ArrayList<PanelHabitat> getHabitats(){
+    public ArrayList<PanelHabitat> getHabitats() {
         return habitats;
     }
-    public void updateMovements(){
-        for (int i = 0; i < habitats.size(); i++){
+    public void updateMovements() {
+        for (int i = 0; i < habitats.size(); i++) {
             getHabitats().get(i).updateAnimalMovements();
         }
     }
 
-    public void cursorIsOnHitbox(Rectangle hitbox, Animal animal){
+    public void cursorIsOnHitbox(HitboxAnimal hitbox) {
         Timer timer = new Timer(500, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Point mouseLocationRelativeToPanel = PanelGame.getInstance().getMousePosition();
                 if (mouseLocationRelativeToPanel != null) {
                     // Aparecer panel
-                    if (hitbox.contains(mouseLocationRelativeToPanel) && PanelGame.getInstance().contains(mouseLocationRelativeToPanel)) {
-                        if (panelanimalstats == null) {
-                            panelanimalstats = new PanelAnimalStats(hitbox, mouseLocationRelativeToPanel, animal);
-                            panelanimalstats.CreateInterfazAnimal();
+                    if (hitbox.hitboxIsVisible()) {
+                        if (hitbox.getHitbox().contains(mouseLocationRelativeToPanel) && PanelGame.getInstance().contains(mouseLocationRelativeToPanel)) {
+                            if (panelanimalstats == null) {
+                                panelanimalstats = new PanelAnimalStats(hitbox.getHitbox(), mouseLocationRelativeToPanel);
+                                panelanimalstats.CreateInterfazAnimal();
+                            }
                         }
-                    }
-                    // Remover panel solo si el cursor no está sobre el hitbox o el panel
-                    else {
-                        if (panelanimalstats != null) {
-                            Rectangle panelBounds = panelanimalstats.getBounds();
-                            panelBounds.translate(0, -47);  //6, 29
-                            Point panelLocation = panelBounds.getLocation();
-                            panelBounds.setLocation(panelLocation);
+                        // Remover panel solo si el cursor no está sobre el hitbox o el panel
+                        else {
+                            if (panelanimalstats != null) {
+                                Rectangle panelBounds = panelanimalstats.getBounds();
+                                panelBounds.translate(0, -47);  //6, 29
+                                Point panelLocation = panelBounds.getLocation();
+                                panelBounds.setLocation(panelLocation);
 
-                            if (!hitbox.contains(mouseLocationRelativeToPanel) && !panelBounds.contains(mouseLocationRelativeToPanel)) {
-                                panelanimalstats.removeInterfazAnimal();
-                                panelanimalstats = null;
+                                if (!hitbox.getHitbox().contains(mouseLocationRelativeToPanel) && !panelBounds.contains(mouseLocationRelativeToPanel)) {
+                                    panelanimalstats.removeInterfazAnimal();
+                                    panelanimalstats = null;
+                                }
                             }
                         }
                     }
@@ -140,7 +142,7 @@ public class PanelGame extends JPanel {
         timer.start();
     }
 
-    protected void paintComponent(Graphics g){
+    protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("pasto.png"))).getImage(), 0, 154, null);
         if (Objects.equals(cielo.getCielo(), "dia")) {
@@ -157,13 +159,32 @@ public class PanelGame extends JPanel {
         for (PanelHabitat habitatPanel : habitats) {
             // habitatPanel.paintHabitatBackground(g);
             habitatPanel.paintAnimals(g);
+            habitatPanel.setHitbox();
         }
 
         if (selectionMode) {
             for (int i = 0; i < habitats.size(); i++) {
+                for (int j = 0; j < habitats.get(i).getLogicHabitat().getAnimalsInTheHabitat().size(); j++) {  //Agregado para ocultar las hitbox, SUJETO A CAMBIOS
+                    //Agregado para ocultar las hitbox, SUJETO A CAMBIOS
+                    habitats.get(i).getLogicHabitat().getAnimalsInTheHabitat().get(j).getHitboxAnimal().hideHitbox();
+                }
                 g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("Flecha.gif"))).getImage(), (int) habitats.get(i).getLocationOfHabitat().getX() + 120, (int) habitats.get(i).getLocationOfHabitat().getY() + -110, null);
             }
         }
+        //Agregado para mostrar las hitbox, SUJETO A CAMBIOS
+        else {
+            for (int i = 0; i < habitats.size(); i++) {
+                for (int j = 0; j < habitats.get(i).getLogicHabitat().getAnimalsInTheHabitat().size(); j++) {
+                    if(!habitats.get(i).getLogicHabitat().getAnimalsInTheHabitat().get(j).getHitboxAnimal().hitboxIsVisible()) {
+                        habitats.get(i).getLogicHabitat().getAnimalsInTheHabitat().get(j).getHitboxAnimal().showHitbox();
+                    }
+                    else{
+                        break;
+                    }
+                }
+            }
+        }
+
         /*g.setColor(Color.GREEN);
         g.fillRect(0, 154, 322, 460);
         g.setColor(Color.RED);

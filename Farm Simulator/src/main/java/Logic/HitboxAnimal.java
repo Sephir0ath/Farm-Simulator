@@ -6,19 +6,29 @@ import java.awt.*;
 
 public class HitboxAnimal {
     private Rectangle hitbox;
-    private Animal animal;
+    private boolean isVisible;
     private static PanelAnimalStats panelanimalstats = null;
 
-    public HitboxAnimal(Point ubicacion, Animal animal) {
-        this.animal = animal;
+    public HitboxAnimal(Point ubicacion) {
         this.hitbox = new Rectangle((int) ubicacion.getX(), (int) ubicacion.getY(), 40, 30);
+        this.isVisible = true;
     }
 
     public void updateHitbox(Point ubicacion) {
         this.hitbox.setLocation((int) ubicacion.getX(), (int) ubicacion.getY());
     }
 
-    public void cursorInAnimal() {
-        PanelGame.getInstance().cursorIsOnHitbox(this.hitbox, this.animal);
+    public boolean hitboxIsVisible(){
+        return isVisible;
+    }
+    public void showHitbox() {
+        isVisible = true;
+    }
+
+    public void hideHitbox() {
+        isVisible = false;
+    }
+    public Rectangle getHitbox(){
+        return this.hitbox;
     }
 }

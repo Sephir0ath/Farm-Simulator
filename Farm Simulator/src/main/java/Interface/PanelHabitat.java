@@ -8,6 +8,7 @@ import java.awt.*;
 public class PanelHabitat extends JPanel {
     private static boolean resized = false;
     private Habitat habitat;
+    private HitboxAnimal hitboxAnimal = null;
     public PanelHabitat(){
         this.setOpaque(false); // MUY IMPORTANTE
         habitat = new Habitat();
@@ -32,7 +33,7 @@ public class PanelHabitat extends JPanel {
         }
     }
 
-    protected void paintHabitatBackground(Graphics g){
+    /*protected void paintHabitatBackground(Graphics g){
         g.setColor(new Color(106, 175, 106));
         g.fillRect((int)this.getLocationOfHabitat().getX(),(int)this.getLocationOfHabitat().getY() , this.getWidth(), this.getHeight());
         g.setColor(Color.black);
@@ -41,7 +42,20 @@ public class PanelHabitat extends JPanel {
         if (habitat.checkIsHabitatActive()){
             //todo pintar vallas de habitat
         }
+    }*/
 
+    public void setHitbox(){
+        for (int j = 0; j < habitat.getAnimalsInTheHabitat().size(); j++) {
+            Point location = habitat.getAnimalsInTheHabitat().get(j).getLocation();
+            if(habitat.getAnimalsInTheHabitat().get(j).getHitboxAnimal() == null) {
+                this.hitboxAnimal = new HitboxAnimal(location);
+                habitat.getAnimalsInTheHabitat().get(j).setHitboxAnimal(this.hitboxAnimal);
+                PanelGame.getInstance().cursorIsOnHitbox(this.hitboxAnimal);
+            }
+            else{
+                habitat.getAnimalsInTheHabitat().get(j).getHitboxAnimal().updateHitbox(location);
+            }
+        }
     }
 
     public void paintAnimals(Graphics g){
