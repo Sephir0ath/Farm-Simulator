@@ -68,11 +68,7 @@ public class Habitat {
 
     //Hay cosas que hacer
     public boolean checkIfFoodCorrespondsToDeposit(Food food){
-        if (this.foodDeposit.getDepositType() == null || food.getFoodType() == this.foodDeposit.getDepositType()){
-            foodDeposit.setDepositType(food.getFoodType());
-            return true;
-        }
-        return false;
+        return food.getFoodType() == this.foodDeposit.getDepositType();
     }
 
     /**
@@ -122,26 +118,31 @@ public class Habitat {
                 this.animalsInTheHabitat.add(animal);
                 this.actualCapacity += 1;
             }
-            else{
+            else {
                 throw new FullCapacityException();
             }
         }
-        else{
+        else {
             throw new AnimalTypeDifferentFromHabitatTypeException();
         }
     }
 
-    public void addFoodToDeposit(Food food) throws FullCapacityException,FoodTypeDifferentFromHabitatTypeException{
-        if (checkIfFoodCorrespondsToDeposit(food)){
-            if (!checkIfDepositIsFull()) {
-                this.foodDeposit.addFood(food);
+    public void addFoodToDeposit(Food food) throws FullCapacityException, FoodTypeDifferentFromHabitatTypeException, HabitatTypeIsNullException {
+        if(this.habitatType != null) {
+            if (checkIfFoodCorrespondsToDeposit(food)) {
+                if (!checkIfDepositIsFull()) {
+                    this.foodDeposit.addFood(food);
+                }
+                else {
+                    throw new FullCapacityException();
+                }
             }
-            else{
-                throw new FullCapacityException();
+            else {
+                throw new FoodTypeDifferentFromHabitatTypeException();
             }
         }
-        else{
-            throw new FoodTypeDifferentFromHabitatTypeException();
+        else {
+        throw new HabitatTypeIsNullException();
         }
     }
 

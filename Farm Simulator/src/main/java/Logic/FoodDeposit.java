@@ -27,8 +27,14 @@ public class FoodDeposit {
         return this.foodInDeposit.size();
     }
 
-    public void setDepositType(FoodTypes depositType) {
-        this.depositType = depositType;
+    public void setDepositType(Animal animal) {
+        switch(animal.getAnimalType()){
+            case VACAS, OVEJA -> this.depositType = FoodTypes.TRIGO;
+            case CERDO -> this.depositType = FoodTypes.ZANAHORIA;
+            case CABRA -> this.depositType = FoodTypes.MAIZ;
+            case GALLINA -> this.depositType = FoodTypes.SEMILLAS;
+            case CABALLO -> this.depositType = FoodTypes.MANZANA;
+        }
     }
 
     public FoodTypes getDepositType(){

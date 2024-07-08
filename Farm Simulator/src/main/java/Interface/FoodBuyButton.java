@@ -43,20 +43,19 @@ public class FoodBuyButton extends JButton {
                             PanelGame.getInstance().getClickedHabitat().getLogicHabitat().addFoodToDeposit(food);
                             PlayerInfo.getInstance().addToStat(0, -typeOfFood.getPrice());
                         }
-
                         else {
                             new MessageWindow("No tienes suficiente dinero");
                         }
                     }
-
                     catch (FullCapacityException e) {
                         new MessageWindow("Deposito lleno");
                     }
-
                     catch (FoodTypeDifferentFromHabitatTypeException e) {
                         new MessageWindow("No puedes colocar ese tipo de comida allí");
                     }
-
+                    catch (HabitatTypeIsNullException e) {
+                        new MessageWindow("El habitat no tiene un tipo de animal");
+                    }
                     finally {
                         PanelGame.getInstance().setClickedHabitatToNull();
                         isThisButtonPressed = false;
