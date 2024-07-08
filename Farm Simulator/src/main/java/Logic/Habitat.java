@@ -54,7 +54,7 @@ public class Habitat {
                 for (int i = 0; i < animalsInTheHabitat.size(); i++){
                     animalsInTheHabitat.get(i).loseFood();
                     if (animalsInTheHabitat.get(i).checkIfAnimalFoodIsZero()){
-                        new MessageWindow("Un animal de tu granja a muerto");
+                        new MessageWindow("Un animal de tu granja Ha muerto");
                         deleteAnimal(animalsInTheHabitat.get(i));
                     }
                 }
