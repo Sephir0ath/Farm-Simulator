@@ -11,4 +11,9 @@ public class Chicken extends Animal{
     public AnimalTypes getAnimalType() {
         return AnimalTypes.GALLINA;
     }
+
+    @Override
+    public void giveMoneyEachSecond() {
+        PlayerInfo.getInstance().addToStat(0, this.getAnimalType().getMoneyDrop());
+    }
 }

@@ -11,4 +11,9 @@ public class Pig extends Animal{
     public AnimalTypes getAnimalType() {
         return AnimalTypes.CERDO;
     }
+
+    @Override
+    public void giveMoneyEachSecond() {
+        PlayerInfo.getInstance().addToStat(0, this.getAnimalType().getMoneyDrop());
+    }
 }

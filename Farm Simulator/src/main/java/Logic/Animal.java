@@ -26,6 +26,7 @@ public abstract class Animal {
         return actualfood == 0;
     }
 
+    public abstract void giveMoneyEachSecond();
 
     public void randomMovement() {
         int newXMovement = random.nextInt(20) - 10;

@@ -11,4 +11,9 @@ public class Cow extends Animal {
     public AnimalTypes getAnimalType() {
         return AnimalTypes.VACAS;
     }
+
+    @Override
+    public void giveMoneyEachSecond() {
+        PlayerInfo.getInstance().addToStat(0, this.getAnimalType().getMoneyDrop());
+    }
 }

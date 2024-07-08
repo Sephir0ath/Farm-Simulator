@@ -15,6 +15,7 @@ public class AnimalBuyButton extends JButton {
     private Animal animal;
     private AnimalTypes typeOfAnimal;
     private boolean isThisButtonPressed;
+
     public AnimalBuyButton(AnimalTypes animalType){
         super(animalType.getAnimal() + " " + animalType.getPrice() + "$");
         this.typeOfAnimal = animalType;
@@ -25,33 +26,31 @@ public class AnimalBuyButton extends JButton {
             @Override
             public void run() {
                 if (!PanelGame.getInstance().getSelectionMode() && PanelGame.getInstance().getClickedHabitat() != null && isThisButtonPressed){
-                    System.out.println("Logrado 2");
-                    try {
-                        if (PlayerInfo.getInstance().getStats(0) - animalType.getPrice() >= 0) {
-                            switch (typeOfAnimal) {
-                                case VACAS ->
-                                        animal = new Cow(PanelGame.getInstance().getClickedHabitat().getLocationOfHabitat(), PanelGame.getInstance().getClickedHabitat().getBottomRightLocationOfHabitat());
-                                case CERDO ->
-                                        animal = new Pig(PanelGame.getInstance().getClickedHabitat().getLocationOfHabitat(), PanelGame.getInstance().getClickedHabitat().getBottomRightLocationOfHabitat());
-                                case GALLINA ->
-                                        animal = new Chicken(PanelGame.getInstance().getClickedHabitat().getLocationOfHabitat(), PanelGame.getInstance().getClickedHabitat().getBottomRightLocationOfHabitat());
-                                case CABRA ->
-                                        animal = new Goat(PanelGame.getInstance().getClickedHabitat().getLocationOfHabitat(), PanelGame.getInstance().getClickedHabitat().getBottomRightLocationOfHabitat());
-                                case CABALLO ->
-                                        animal = new Horse(PanelGame.getInstance().getClickedHabitat().getLocationOfHabitat(), PanelGame.getInstance().getClickedHabitat().getBottomRightLocationOfHabitat());
-                                case OVEJA ->
-                                        animal = new Sheep(PanelGame.getInstance().getClickedHabitat().getLocationOfHabitat(), PanelGame.getInstance().getClickedHabitat().getBottomRightLocationOfHabitat());
+                    try{
+                        if (PlayerInfo.getInstance().getStats(0) - animalType.getPrice() >= 0){
+                            switch (typeOfAnimal){
+                                case VACAS -> animal = new Cow(PanelGame.getInstance().getClickedHabitat().getLocationOfHabitat(), PanelGame.getInstance().getClickedHabitat().getBottomRightLocationOfHabitat());
+                                case CERDO -> animal = new Pig(PanelGame.getInstance().getClickedHabitat().getLocationOfHabitat(), PanelGame.getInstance().getClickedHabitat().getBottomRightLocationOfHabitat());
+                                case GALLINA -> animal = new Chicken(PanelGame.getInstance().getClickedHabitat().getLocationOfHabitat(), PanelGame.getInstance().getClickedHabitat().getBottomRightLocationOfHabitat());
+                                case CABRA -> animal = new Goat(PanelGame.getInstance().getClickedHabitat().getLocationOfHabitat(), PanelGame.getInstance().getClickedHabitat().getBottomRightLocationOfHabitat());
+                                case CABALLO -> animal = new Horse(PanelGame.getInstance().getClickedHabitat().getLocationOfHabitat(), PanelGame.getInstance().getClickedHabitat().getBottomRightLocationOfHabitat());
+                                case OVEJA -> animal = new Sheep(PanelGame.getInstance().getClickedHabitat().getLocationOfHabitat(), PanelGame.getInstance().getClickedHabitat().getBottomRightLocationOfHabitat());
                             }
-                            PanelGame.getInstance().getClickedHabitat().getHabitat().addAnimalToHabitat(animal);
-                            PlayerInfo.getInstance().setStat(0, -typeOfAnimal.getPrice());
-                            System.out.println("Logrado 1");
-                        } else {
+                            PanelGame.getInstance().getClickedHabitat().getLogicHabitat().addAnimalToHabitat(animal);
+                            PanelGame.getInstance().getClickedHabitat().getLogicHabitat().setActive();
+                            PlayerInfo.getInstance().addToStat(0, -typeOfAnimal.getPrice());
+
+                        }
+
+                        else {
                             new MessageWindow("No tienes suficiente dinero");
                         }
                     }
+
                     catch (FullCapacityException e) {
                         new MessageWindow("Habitat lleno");
                     }
+
                     catch (AnimalTypeDifferentFromHabitatTypeException e) {
                         new MessageWindow("No puedes colocar ese tipo de animal allí");
                     }

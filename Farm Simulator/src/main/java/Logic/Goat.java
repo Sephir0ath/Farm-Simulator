@@ -11,4 +11,9 @@ public class Goat extends Animal{
     public AnimalTypes getAnimalType() {
         return AnimalTypes.CABRA;
     }
+
+    @Override
+    public void giveMoneyEachSecond() {
+        PlayerInfo.getInstance().addToStat(0, this.getAnimalType().getMoneyDrop());
+    }
 }

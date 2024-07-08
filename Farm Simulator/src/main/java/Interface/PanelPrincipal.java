@@ -4,12 +4,14 @@ import Logic.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class PanelPrincipal extends JPanel {
-    private ScheduledExecutorService scheduler;
+    private ScheduledExecutorService repaintScheduler;
+    private ScheduledExecutorService moneyScheduler;
     private PlayerInfo playerInfo;
     private PanelStats panelStats;
     private PanelMenu panelMenu;
@@ -27,8 +29,8 @@ public class PanelPrincipal extends JPanel {
         this.add(panelStats, BorderLayout.NORTH);
         this.add(panelMenu, BorderLayout.EAST);
 
-        scheduler = new ScheduledThreadPoolExecutor(1);
-        scheduler.scheduleAtFixedRate(new Runnable() {
+        repaintScheduler = new ScheduledThreadPoolExecutor(1);
+        repaintScheduler.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
                 panelStats.updateStatsPanels(playerInfo);
@@ -38,7 +40,23 @@ public class PanelPrincipal extends JPanel {
             }
         }, 0, 100, TimeUnit.MILLISECONDS);
 
+        moneyScheduler = new ScheduledThreadPoolExecutor(1);
+        moneyScheduler.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                int counter = 0;
+                ArrayList<PanelHabitat> habitats =  panelGame.getHabitats();
+                for (int i = 0; i < habitats.size(); i++) {
+                    counter += habitats.get(i).getLogicHabitat().getAnimalQuantity();
+                    for (int j = 0; j < habitats.get(i).getLogicHabitat().getAnimalsInTheHabitat().size(); j++){
+                        habitats.get(i).getLogicHabitat().getAnimalsInTheHabitat().get(j).giveMoneyEachSecond();
 
+                    }
+                }
+
+                PlayerInfo.getInstance().setStats(1, counter);
+            }
+        }, 0, 1000, TimeUnit.MILLISECONDS);
 
     }
 }

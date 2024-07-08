@@ -11,4 +11,9 @@ public class Horse extends Animal{
     public AnimalTypes getAnimalType() {
         return AnimalTypes.CABALLO;
     }
+
+    @Override
+    public void giveMoneyEachSecond() {
+        PlayerInfo.getInstance().addToStat(0, this.getAnimalType().getMoneyDrop());
+    }
 }
