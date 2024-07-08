@@ -35,12 +35,15 @@ public class PanelAnimalStats extends JPanel {
      * Método para crear el JLabel que contiene las stasts del animal.
      */
     public void CreateInterfazAnimal() {
-        this.setBounds((int) positionMouseToPanel.getX(), (int) positionMouseToPanel.getY()-47, 200, 100);
+        this.setBounds((int) positionMouseToPanel.getX(), (int) positionMouseToPanel.getY(), 100, 70);
         this.setLayout(new BorderLayout());
-        this.add(new JLabel("Hola"), BorderLayout.CENTER);
-        JLabel labelFood = new JLabel("Comida: " + animal.getActualFood());
+        JLabel labelFood = new JLabel("          " + animal.getActualFood());
         this.add(labelFood);
-        this.add(new AnimalTradeButton("Vender: " + animal.calculateSellValue(), this, animal, habitat, hitboxAnimal), BorderLayout.SOUTH);
+        AnimalTradeButton sellAnimal = new AnimalTradeButton("", this, animal, habitat, hitboxanimal);
+        sellAnimal.setPreferredSize(new Dimension(100,25));
+        this.add(sellAnimal, BorderLayout.SOUTH);
+        sellAnimal.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("sellAnimalButton.png"))));
+
         layeredPane.add(this, JLayeredPane.POPUP_LAYER);
 
         layeredPane.revalidate();
@@ -60,11 +63,58 @@ public class PanelAnimalStats extends JPanel {
     }
 
     /**
+     * Override de paintComponent, pinta el panel.
      * Método que hace desaparecer el panel de stats.
      */
     public void removeInterfazAnimal() {
         layeredPane.remove(this);
         layeredPane.revalidate();
         layeredPane.repaint();
+    }
+
+    /**
+     *
+     * @param g the <code>Graphics</code> object to protect
+     */
+
+    protected void paintComponent(Graphics g){
+        super.paintComponent(g);
+        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("panelAnimalStats.png"))).getImage(), 0, 0, null);
+        if(habitatType!=null){
+            switch (habitatType) {
+                case VACAS ->
+                        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconCow.png"))).getImage(), 40, 0, null);
+                case CERDO ->
+                        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconPig.png"))).getImage(), 40, 0, null);
+                case GALLINA ->
+                        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconChicken.png"))).getImage(), 40, 0, null);
+                case OVEJA ->
+                        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconSheep.png"))).getImage(), 40, 0, null);
+                case CABRA ->
+                        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconGoat.png"))).getImage(), 40, 0, null);
+                case CABALLO ->
+                        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconHorse.png"))).getImage(), 40, 0, null);
+            }
+        }
+        else {
+            g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconNull.png"))).getImage(), 40, 0, null);
+        }
+        if(depositType != null){
+            switch (depositType) {
+                case TRIGO ->
+                        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconWheat.png"))).getImage(), 10, 10, null);
+                case MAIZ ->
+                        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconCorn.png"))).getImage(), 10, 10, null);
+                case ZANAHORIA ->
+                        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconCarrot.png"))).getImage(), 10, 10, null);
+                case SEMILLAS ->
+                        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconSeeds.png"))).getImage(), 10, 10, null);
+                case MANZANA ->
+                        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconApple.png"))).getImage(), 10, 10, null);
+            }
+        }
+        else {
+            g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconNull.png"))).getImage(), 10, 10, null);
+        }
     }
 }

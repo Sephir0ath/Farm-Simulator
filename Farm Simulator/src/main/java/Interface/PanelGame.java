@@ -172,7 +172,6 @@ public class PanelGame extends JPanel {
                         else {
                             if (panelanimalstats != null) {
                                 Rectangle panelBounds = panelanimalstats.getBounds();
-                                panelBounds.translate(0, -47);  //6, 29
                                 Point panelLocation = panelBounds.getLocation();
                                 panelBounds.setLocation(panelLocation);
 
