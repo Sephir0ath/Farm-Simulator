@@ -5,6 +5,7 @@ import Logic.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.awt.event.*;
 
 public class PanelGame extends JPanel {
@@ -107,16 +108,15 @@ public class PanelGame extends JPanel {
 
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("pasto.png")).getImage(), 0, 154, null);
-        if (cielo.getCielo() == "dia") {
-            g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("dia.png")).getImage(), 0, 0, null);
+        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("pasto.png"))).getImage(), 0, 154, null);
+        if (Objects.equals(cielo.getCielo(), "dia")) {
+            g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("dia.png"))).getImage(), 0, 0, null);
         }
-        else if (cielo.getCielo() == "tarde") {
-            g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("tarde.png")).getImage(), 0, 0, null);
+        else if (Objects.equals(cielo.getCielo(), "tarde")) {
+            g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("tarde.png"))).getImage(), 0, 0, null);
         }
         else {
-            g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("noche.png")).getImage(), 0, 0, null);
-
+            g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("noche.png"))).getImage(), 0, 0, null);
         }
         /*g.setColor(Color.BLUE);
         g.fillRect(0, 0, 966, 154);*/
@@ -125,6 +125,11 @@ public class PanelGame extends JPanel {
             habitatPanel.paintAnimals(g);
         }
 
+        if (selectionMode) {
+            for (int i = 0; i < habitats.size(); i++) {
+                g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("Flecha.gif"))).getImage(), (int) habitats.get(i).getLocationOfHabitat().getX() + 120, (int) habitats.get(i).getLocationOfHabitat().getY() + -110, null);
+            }
+        }
         /*g.setColor(Color.GREEN);
         g.fillRect(0, 154, 322, 460);
         g.setColor(Color.RED);

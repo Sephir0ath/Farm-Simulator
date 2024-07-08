@@ -4,7 +4,6 @@ import Logic.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -41,14 +40,5 @@ public class PanelPrincipal extends JPanel {
 
             }
         }, 0, 100, TimeUnit.MILLISECONDS);
-
-        moneyScheduler = new ScheduledThreadPoolExecutor(1);
-        moneyScheduler.scheduleAtFixedRate(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        }, 0, 1000, TimeUnit.MILLISECONDS);
-
     }
 }
