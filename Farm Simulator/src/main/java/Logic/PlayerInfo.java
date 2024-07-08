@@ -84,4 +84,6 @@ public class PlayerInfo {
             observers.get(i).update(this);
         }
     }
+
+
 }

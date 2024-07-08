@@ -3,6 +3,7 @@ package Interface;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 /**
  * Clase que representa el botón para acceder a la ventana de logros.
@@ -10,7 +11,7 @@ import java.awt.event.ActionListener;
 public class AchievementsButton extends JButton {
     public AchievementsButton() {
         super();
-        setIcon(new ImageIcon(getClass().getClassLoader().getResource("achievementsButton.png")));
+        setIcon(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("achievementsButton.png"))));
 
         addActionListener(new ActionListener() {
             @Override
