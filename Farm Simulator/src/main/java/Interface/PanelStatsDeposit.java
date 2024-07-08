@@ -45,6 +45,10 @@ public class PanelStatsDeposit extends JPanel{
         layeredPane.add(this, JLayeredPane.POPUP_LAYER);
         JLabel habitatLabel = new JLabel(actualAnimalsInHabitat+"/"+maxAnimalsInHabitat);
         JLabel depositLabel = new JLabel(actualFoodInDeposit+"/"+maxFoodDeposit);
+        habitatLabel.setForeground(new Color(129,83,45));
+        depositLabel.setForeground(new Color(129,83,45));
+        habitatLabel.setFont(new Font("Arial", Font.BOLD, 12));
+        depositLabel.setFont(new Font("Arial", Font.BOLD, 12));
         habitatLabel.setBounds(35,24,40,20);
         depositLabel.setBounds(35,62,40,20);
         this.setLayout(null);

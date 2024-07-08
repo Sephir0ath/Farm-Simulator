@@ -41,13 +41,24 @@ public class PanelAnimalStats extends JPanel {
      */
     public void CreateInterfazAnimal() {
         this.setBounds((int) positionMouseToPanel.getX(), (int) positionMouseToPanel.getY(), 100, 70);
-        this.setLayout(new BorderLayout());
-        JLabel labelFood = new JLabel("          " + animal.getActualFood());
-        this.add(labelFood);
-        AnimalTradeButton sellAnimal = new AnimalTradeButton("", this, animal, habitat, hitboxAnimal);
-        sellAnimal.setPreferredSize(new Dimension(100,25));
-        this.add(sellAnimal, BorderLayout.SOUTH);
+        this.setLayout(null);
+        this.setDoubleBuffered(true);
+
+        JLabel labelHungry = new JLabel(""+animal.getActualFood());
+        JLabel labelSell = new JLabel("$"+animal.calculateSellValue());
+        AnimalTradeButton sellAnimal = new AnimalTradeButton(null, this, animal, habitat, hitboxAnimal);
+        sellAnimal.setBounds(0,45,100,25);
+        labelHungry.setBounds(44,20,40,15);
+        labelSell.setBounds(50,51,40,15);
+        labelHungry.setFont(new Font("Arial", Font.BOLD, 12));
+        labelSell.setFont(new Font("Arial", Font.BOLD, 12));
+        labelHungry.setForeground(new Color(129,83,45));
+        labelSell.setForeground(new Color(191,143,0));
         sellAnimal.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("sellAnimalButton.png"))));
+
+        this.add(labelSell);
+        this.add(labelHungry);
+        this.add(sellAnimal);
 
         layeredPane.add(this, JLayeredPane.POPUP_LAYER);
 
@@ -82,10 +93,10 @@ public class PanelAnimalStats extends JPanel {
      * @param g the <code>Graphics</code> object to protect
      */
 
-    protected void paintComponent(Graphics g){
+    protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("panelAnimalStats.png"))).getImage(), 0, 0, null);
-        if(habitatType!=null){
+        if (habitatType != null) {
             switch (habitatType) {
                 case VACAS ->
                         g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconCow.png"))).getImage(), 40, 0, null);
@@ -100,26 +111,24 @@ public class PanelAnimalStats extends JPanel {
                 case CABALLO ->
                         g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconHorse.png"))).getImage(), 40, 0, null);
             }
-        }
-        else {
+        } else {
             g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconNull.png"))).getImage(), 40, 0, null);
         }
-        if(depositType != null){
+        if (depositType != null) {
             switch (depositType) {
                 case TRIGO ->
-                        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconWheat.png"))).getImage(), 10, 10, null);
+                        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconWheat.png"))).getImage(), 10, 13, null);
                 case MAIZ ->
-                        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconCorn.png"))).getImage(), 10, 10, null);
+                        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconCorn.png"))).getImage(), 10, 13, null);
                 case ZANAHORIA ->
-                        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconCarrot.png"))).getImage(), 10, 10, null);
+                        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconCarrot.png"))).getImage(), 10, 13, null);
                 case SEMILLAS ->
-                        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconSeeds.png"))).getImage(), 10, 10, null);
+                        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconSeeds.png"))).getImage(), 10, 13, null);
                 case MANZANA ->
-                        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconApple.png"))).getImage(), 10, 10, null);
+                        g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconApple.png"))).getImage(), 10, 13, null);
             }
-        }
-        else {
-            g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconNull.png"))).getImage(), 10, 10, null);
+        } else {
+            g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("iconNull.png"))).getImage(), 10, 13, null);
         }
     }
 }
