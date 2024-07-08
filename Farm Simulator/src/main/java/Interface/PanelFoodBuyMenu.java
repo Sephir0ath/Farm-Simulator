@@ -5,6 +5,9 @@ import Logic.*;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Clase que representa un JPanel, en este se encuentra el sub-menú para la compra de comida
+ */
 public class PanelFoodBuyMenu extends JPanel {
     public PanelFoodBuyMenu(){
         super();

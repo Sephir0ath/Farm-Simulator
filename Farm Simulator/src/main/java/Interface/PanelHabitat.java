@@ -34,6 +34,9 @@ public class PanelHabitat extends JPanel {
         }
     }
 
+    /**
+     * Metodo engargado de asignar las hitbox a los animales y a los depositos de comida de cada habitat
+     */
     public void setHitbox(){
         if(hitboxDeposit == null) {
             hitboxDeposit = new HitboxDeposit(this.getLocationOfHabitat());

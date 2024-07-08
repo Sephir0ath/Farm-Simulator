@@ -6,11 +6,22 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
+/**
+ * Clase que extiende de JButton, es la encargada de crear el boton para vender un animal referenciado
+ */
 public class AnimalTradeButton extends JButton{
     private Animal animal;
     private JLayeredPane layeredpane;
     private PanelAnimalStats panelanimalstats;
     private Habitat habitat;
+    /**
+     * Metodo constructor
+     * @param text
+     * @param panelanimalstats
+     * @param animal
+     * @param habitat
+     * @param hitboxAnimal
+     */
     public AnimalTradeButton(String text, PanelAnimalStats panelanimalstats, Animal animal, Habitat habitat, Rectangle hitboxAnimal) {
         this.panelanimalstats = panelanimalstats;
         this.animal = animal;
@@ -21,7 +32,9 @@ public class AnimalTradeButton extends JButton{
         this.botonPresionado();
     }
 
-    // Actualiza el metodo botonPresionado
+    /**
+     * Metodo para definir la accion de presionar el boton para vender el animal
+     */
     private void botonPresionado() {
         this.addActionListener(new ActionListener() {
             @Override

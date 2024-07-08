@@ -103,9 +103,13 @@ public class Habitat {
         return false;
     }
 
-    //Hay cosas que hacer
+    /**
+     * Metodo que sirve para verifica si un alimento se puede añadir o no al deposito de comida del habitat
+     * @param food de tipo Food, se usa para ver que tipo de comida es en comparacion con el tipo de deposito
+     * @return boolean, indica si la comida recibida corresponde con el tipo de deposito de comida del habitat
+     */
     public boolean checkIfFoodCorrespondsToDeposit(Food food){
-        return food.getFoodType() == this.foodDeposit.getDepositType();
+        return food.getFoodType() == foodDeposit.getDepositType();
     }
 
     /**
@@ -168,6 +172,14 @@ public class Habitat {
         }
     }
 
+    /**
+     * Metodo de que se encarga de añadir comida al deposito de comida del habitat, en caso que se pueda
+     * @param food de tipo Food, este se añadira al deposito de comida del habitat si es compatible con su tipo
+     * @throws FullDepositException aparece si intentamos comprar comida y sobrepasamos la capacidad de deposito de comida
+     * @throws FoodTypeDifferentFromHabitatTypeException aparece si intentamos comprar comida de un tipo que no coincide
+     * con el tipo de deposito de comida
+     * @throws HabitatTypeIsNullException aparece si intentamos comprar comida para un habitat vacio
+     */
     public void addFoodToDeposit(Food food) throws FullDepositException, FoodTypeDifferentFromHabitatTypeException, HabitatTypeIsNullException {
         if(this.habitatType != null) {
             if (checkIfFoodCorrespondsToDeposit(food)) {
@@ -202,6 +214,10 @@ public class Habitat {
         this.MAX_FOOD += 10;
     }
 
+    /**
+     * Metodo getter, entrega el deposito de comida del habitat
+     * @return foodDeposit de tipo FoodDeposit contiene el deposito de comida del habitat
+     */
     public FoodDeposit getFoodDeposit() {
         return foodDeposit;
     }
@@ -210,10 +226,18 @@ public class Habitat {
         return MAX_FOOD;
     }
 
+    /**
+     * Metodo de tipo setter, guarda la hitbox del deposito de comida del habitat
+     * @param hitboxDeposit de tipo HitboxDeposit, contiene la hitbox del deposito de comida del habitat
+     */
     public void setHitboxDeposit(HitboxDeposit hitboxDeposit){
         this.hitboxDeposit = hitboxDeposit;
     }
 
+    /**
+     * Metodo de tipo getter, entrega la variable que contiene la hitbox del deposito de comida
+     * @return hitboxDeposit de tipo HitboxDeposit, contiene la hitbox del deposito
+     */
     public HitboxDeposit getHitboxDeposit(){
         return this.hitboxDeposit;
     }

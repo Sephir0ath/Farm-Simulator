@@ -9,6 +9,7 @@ import java.util.Objects;
 import java.awt.event.*;
 
 public class PanelGame extends JPanel {
+    private static PanelStatsDeposit panelStatsDeposit = null;
     private static PanelAnimalStats panelanimalstats = null;
     private final ArrayList<PanelHabitat> habitats;
     private static PanelGame instance;
@@ -107,6 +108,12 @@ public class PanelGame extends JPanel {
         }
     }
 
+    /**
+     * Metodo encargado de activar la deteccion del cursor sobre las hitbox de los animales para visualizar sus stats
+     * @param hitbox de tipo HitboxAnimal, contiene la hitbox en tiempo real del animal
+     * @param habitat de tipo Habitat, este contiene al animal
+     * @param animal de tipo Animal, es el animal referenciado
+     */
     public void cursorIsOnHitbox(HitboxAnimal hitbox, Habitat habitat, Animal animal) {
         Timer timer = new Timer(500, new ActionListener() {
             @Override
@@ -142,6 +149,12 @@ public class PanelGame extends JPanel {
         timer.start();
     }
 
+    /**
+     * Metodo encargado de activar la deteccion del cursor sobre las hitbox de los deposito de comida para visualizar
+     * sus stats
+     * @param hitbox de tipo HitboxDeposit, contiene la hitbox del deposito
+     * @param habitat de tipo Habitat, este contiene al deposito de comida
+     */
     public void cursorIsOnDeposit(HitboxDeposit hitbox, Habitat habitat) {
         Timer timer = new Timer(500, new ActionListener() {
             @Override

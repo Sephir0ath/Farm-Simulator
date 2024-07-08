@@ -32,6 +32,10 @@ public abstract class Animal {
         this.horaCreado = Instant.now();
     }
 
+    /**
+     * Metodo getter, sirve para saber la cantidad maxima de comida del deposito del habitat
+     * @return actualFood de tipo int, es la maxima capacidad del deposito de comida del habitat
+     */
     public int getActualFood(){
         return actualFood;
     }
@@ -116,10 +120,18 @@ public abstract class Animal {
         return (int)(Instant.now().getEpochSecond() - horaCreado.getEpochSecond()) + getAnimalType().getPrice()/2;
     }
 
+    /**
+     * Metodo de tipo setter, se encarga de asignarle una hitbox al Animal
+     * @param hitboxAnimal Parametro de tipo HitboxAnimal, guarda la hitbox del animal
+     */
     public void setHitboxAnimal(HitboxAnimal hitboxAnimal){
         this.hitboxAnimal = hitboxAnimal;
     }
 
+    /**
+     * Metodo de tipo getter, entrega la hitbox del animal
+     * @return variable de tipo HitboxAnimal, contiene la hitbox del animal en tiempo real
+     */
     public HitboxAnimal getHitboxAnimal(){
         return hitboxAnimal;
     }

@@ -12,6 +12,9 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Clase que extiende de JButton, define la accion de los botones de comida
+ */
 public class FoodBuyButton extends JButton {
     private ScheduledExecutorService scheduler;
     private Food food;
@@ -19,6 +22,11 @@ public class FoodBuyButton extends JButton {
     private boolean isThisButtonPressed;
     private static boolean firstGolden;
 
+    /**
+     * Metodo constructor, asigna un tipo de boton segun la comida y activa el selection mode para agregar la comida
+     * comprada al habitat en caso de ser posible
+     * @param foodType de tipo FoodType, servira para saber el alimento que se comprara
+     */
     public FoodBuyButton(FoodTypes foodType){
         super(foodType.getFood() + " " + foodType.getPrice() + "$");
         typeOfFood = foodType;
@@ -35,17 +43,23 @@ public class FoodBuyButton extends JButton {
                             switch (typeOfFood){
                                 case TRIGO:
                                     food = new Wheat();
+                                    break;
                                 case ZANAHORIA:
                                     food = new Carrot();
+                                    break;
                                 case SEMILLAS:
                                     food = new Seeds();
+                                    break;
                                 case MANZANA:
                                     food = new Apple();
+                                    break;
                                 case MAIZ:
                                     food = new Corn();
+                                    break;
                                 case FRUTA_DORADA:
                                     food = new GoldenFruit();
                                     firstGolden = true;
+                                    break;
                             }
                             PanelGame.getInstance().getClickedHabitat().getLogicHabitat().addFoodToDeposit(food);
                             PlayerInfo.getInstance().addToStat(0, -typeOfFood.getPrice());
