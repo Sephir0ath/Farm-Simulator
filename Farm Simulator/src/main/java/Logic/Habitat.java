@@ -14,6 +14,7 @@ public class Habitat {
     private int actualCapacity;
     private AnimalTypes habitatType;
     private ArrayList<Animal> animalsInTheHabitat;
+    private FoodDeposit foodDeposit;
     private int foodReserve;
 
     /**
@@ -21,6 +22,7 @@ public class Habitat {
      */
     public Habitat(){
         this.isActive = false;
+        this.foodDeposit = new FoodDeposit();
         this.animalsInTheHabitat = new ArrayList<>();
         this.foodReserve = MAX_FOOD;
         this.habitatType = null;
@@ -64,6 +66,15 @@ public class Habitat {
         return false;
     }
 
+    //Hay cosas que hacer
+    public boolean checkIfFoodCorrespondsToDeposit(Food food){
+        if (this.foodDeposit.getDepositType() == null || food.getFoodType() == this.foodDeposit.getDepositType()){
+            foodDeposit.setDepositType(food.getFoodType());
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Función que checkea si un habitat está activo (o sea tiene animales)
      * @return booleano con el valor de isActive
@@ -88,11 +99,17 @@ public class Habitat {
         return this.actualCapacity == MAX_CAPACITY;
     }
 
+    public boolean checkIfDepositIsFull(){
+        return this.foodDeposit.getActualFoodInDeposit() == MAX_FOOD;
+    }
+
     public void fullReset(){
         isActive = false;
         animalsInTheHabitat.clear();
         actualCapacity = 0;
         habitatType = null;
+        foodDeposit.getFoodDeposit().clear();
+        foodDeposit.setDepositType(null);
     }
 
     public void setActive(){
@@ -111,6 +128,20 @@ public class Habitat {
         }
         else{
             throw new AnimalTypeDifferentFromHabitatTypeException();
+        }
+    }
+
+    public void addFoodToDeposit(Food food) throws FullCapacityException,FoodTypeDifferentFromHabitatTypeException{
+        if (checkIfFoodCorrespondsToDeposit(food)){
+            if (!checkIfDepositIsFull()) {
+                this.foodDeposit.addFood(food);
+            }
+            else{
+                throw new FullCapacityException();
+            }
+        }
+        else{
+            throw new FoodTypeDifferentFromHabitatTypeException();
         }
     }
 
