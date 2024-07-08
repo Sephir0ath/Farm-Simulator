@@ -4,8 +4,6 @@ package Interface;
 import Exceptions.*;
 import Logic.*;
 
-import Logic.PlayerInfo;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -47,7 +45,7 @@ public class FoodBuyButton extends JButton {
                             new MessageWindow("No tienes suficiente dinero");
                         }
                     }
-                    catch (FullCapacityException e) {
+                    catch (FullDepositException e) {
                         new MessageWindow("Deposito lleno");
                     }
                     catch (FoodTypeDifferentFromHabitatTypeException e) {

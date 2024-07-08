@@ -36,6 +36,18 @@ public abstract class Animal {
         return actualFood;
     }
 
+    public boolean eat(int habitatFoodQuantity){
+        if (actualFood < MAX_FOOD && habitatFoodQuantity > 0){
+            actualFood += 1;
+            return true;
+        }
+        return false;
+    }
+
+    public void loseFood(){
+        actualFood -= 1;
+    }
+
     /**
      * Función que revisa si el animal no ha comido
      * @return booleano que indica si actualFood es 0

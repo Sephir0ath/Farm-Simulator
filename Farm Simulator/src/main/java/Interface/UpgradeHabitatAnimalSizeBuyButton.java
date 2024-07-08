@@ -32,9 +32,10 @@ public class UpgradeHabitatAnimalSizeBuyButton extends JButton {
                 if (!PanelGame.getInstance().getSelectionMode() && PanelGame.getInstance().getClickedHabitat() != null && isThisButtonPressed) {
                     if (PlayerInfo.getInstance().getStats(0) >= counter*100) {
                         UpgradeCommand increaseCapacity = new UpgradeHabitatSizeCommand(PanelGame.getInstance().getClickedHabitat().getLogicHabitat());
+                        PlayerInfo.getInstance().addToStat(0, -counter*100);
                         increaseCapacity.execute();
                         counter+=1;
-                        UpgradeHabitatAnimalSizeBuyButton.this.setText("Aumentar Capacidad de Animal " + counter*100 + "$");
+                        UpgradeHabitatAnimalSizeBuyButton.this.setText("+ Capacidad de Animal " + counter*100 + "$");
                         isThisButtonPressed = false;
                     }
                     else{

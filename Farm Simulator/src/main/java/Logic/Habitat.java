@@ -1,8 +1,12 @@
 package Logic;
 
 import Exceptions.*;
+import Interface.*;
 
 import java.util.ArrayList;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Clase que representa la logica de un habitat
@@ -10,8 +14,8 @@ import java.util.ArrayList;
 public class Habitat {
     private boolean isActive;
     private int MAX_CAPACITY = 5;
-    private int MAX_FOOD = 50;
-    private int actualCapacity;
+    private int MAX_FOOD = 60;
+    private int actualAnimalQuantity;
     private AnimalTypes habitatType;
     private ArrayList<Animal> animalsInTheHabitat;
     private FoodDeposit foodDeposit;
@@ -25,7 +29,35 @@ public class Habitat {
         this.foodDeposit = new FoodDeposit();
         this.animalsInTheHabitat = new ArrayList<>();
         this.habitatType = null;
-        this.actualCapacity = 0;
+        this.actualAnimalQuantity = 0;
+
+        ScheduledExecutorService eatScheduler = new ScheduledThreadPoolExecutor(1);
+        eatScheduler.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < animalsInTheHabitat.size(); i++){
+                    if(animalsInTheHabitat.get(i).eat(foodDeposit.getActualFoodInDeposit())){
+                        foodDeposit.removeFood();
+                    }
+                }
+
+            }
+        }, 0, 1000, TimeUnit.MILLISECONDS);
+
+
+        ScheduledExecutorService hungerScheduler = new ScheduledThreadPoolExecutor(1);
+        hungerScheduler.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < animalsInTheHabitat.size(); i++){
+                    animalsInTheHabitat.get(i).loseFood();
+                    if (animalsInTheHabitat.get(i).checkIfAnimalFoodIsZero()){
+                        new MessageWindow("Un animal de tu granja a muerto");
+                        deleteAnimal(animalsInTheHabitat.get(i));
+                    }
+                }
+            }
+        }, 0, 3000, TimeUnit.MILLISECONDS);
     }
 
     /**
@@ -41,7 +73,7 @@ public class Habitat {
      * @return valor tipo int con la cantidad de animales en el habitat
      */
     public int getAnimalQuantity(){
-        return actualCapacity;
+        return actualAnimalQuantity;
     }
 
     public int getAnimalQuantityLimit(){
@@ -84,7 +116,7 @@ public class Habitat {
 
     //todo Esta funcion colocarla en scheduler de PanelPrincipal cuando se implemente el vender animales
     public void checkAndDeactivateHabitatIfIsEmpty(){
-        if (checkIsHabitatActive() && actualCapacity == 0){
+        if (checkIsHabitatActive() && actualAnimalQuantity == 0){
             isActive = false;
             habitatType = null;
         }
@@ -95,7 +127,7 @@ public class Habitat {
      * @return booleano que indica si el habitat está lleno o no
      */
     public boolean checkIfHabitatIsFull(){
-        return this.actualCapacity == MAX_CAPACITY;
+        return this.actualAnimalQuantity == MAX_CAPACITY;
     }
 
     public boolean checkIfDepositIsFull(){
@@ -104,11 +136,12 @@ public class Habitat {
 
     public void fullReset(){
         isActive = false;
-        animalsInTheHabitat.clear();
-        actualCapacity = 0;
-        habitatType = null;
+        actualAnimalQuantity = 0;
         foodDeposit.getFoodDeposit().clear();
-        foodDeposit.setDepositType(null);
+        foodDeposit.setDepositTypeNull();
+        habitatType = null;
+        animalsInTheHabitat.clear();
+        PlayerInfo.getInstance().setStats(3, 0);
     }
 
     public void setActive(){
@@ -119,7 +152,7 @@ public class Habitat {
         if (checkIfAnimalCorrespondsToHabitat(animal)){
             if (!checkIfHabitatIsFull()) {
                 this.animalsInTheHabitat.add(animal);
-                this.actualCapacity += 1;
+                this.actualAnimalQuantity += 1;
             }
             else {
                 throw new FullCapacityException();
@@ -130,14 +163,14 @@ public class Habitat {
         }
     }
 
-    public void addFoodToDeposit(Food food) throws FullCapacityException, FoodTypeDifferentFromHabitatTypeException, HabitatTypeIsNullException {
+    public void addFoodToDeposit(Food food) throws FullDepositException, FoodTypeDifferentFromHabitatTypeException, HabitatTypeIsNullException {
         if(this.habitatType != null) {
             if (checkIfFoodCorrespondsToDeposit(food)) {
                 if (!checkIfDepositIsFull()) {
-                    this.foodDeposit.addFood(food);
+                    this.foodDeposit.addFood(food, getFoodReserve());
                 }
                 else {
-                    throw new FullCapacityException();
+                    throw new FullDepositException();
                 }
             }
             else {
@@ -149,19 +182,10 @@ public class Habitat {
         }
     }
 
-    // todo implementar esta funcion cuando los animales se puedan vender y tener hambre
-    public void removeDeadAnimals(){
-        for (int i = animalsInTheHabitat.size() - 1; 0 < i; i--){  // Ir borrando elementos desde atrás hacia delante para evitar problemas con
-            if (animalsInTheHabitat.get(i).checkIfAnimalFoodIsZero()){
-                animalsInTheHabitat.remove(animalsInTheHabitat.get(i));
-            }
-        }
-    }
-
     public void deleteAnimal(Animal animal){
         if (animalsInTheHabitat.contains(animal)){
             animalsInTheHabitat.remove(animal);
-            actualCapacity -= 1;
+            actualAnimalQuantity  -= 1;
         }
     }
 
@@ -180,8 +204,7 @@ public class Habitat {
     public int getFoodReserve(){
         return MAX_FOOD;
     }
-
-
+    
     public void setHitboxDeposit(HitboxDeposit hitboxDeposit){
         this.hitboxDeposit = hitboxDeposit;
     }

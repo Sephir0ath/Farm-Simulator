@@ -35,7 +35,7 @@ public class UpgradeHabitatFoodLimitBuyButton extends JButton {
                         PlayerInfo.getInstance().addToStat(0, -counter*100);
                         increaseCapacity.execute();
                         isThisButtonPressed = false;
-                        UpgradeHabitatFoodLimitBuyButton.this.setText("Aumentar capacidad comida " + counter*100 + "$");
+                        UpgradeHabitatFoodLimitBuyButton.this.setText("+ capacidad comida " + counter*100 + "$");
                     }
                     else{
                         new MessageWindow("No tienes suficiente dinero para comprar eso");
