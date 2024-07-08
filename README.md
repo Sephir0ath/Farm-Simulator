@@ -32,3 +32,7 @@
  * Problemas con Git: hubo momentos de desorganización en el equipo, lo que nos llevó a que algunos commits tuviesen mensajes incompletos o erróneos, por lo que se creó otro repositorio y se hicieron todos los commits correspondientes.
  * Mala gestión del tiempo: se desaprovechó el uso de tiempo que teníamos para realizar ciertas tareas en el proyecto.
  * Desafíos en el codigo: tareas como el posicionamiento de los animales, mostrar las estadisticas de un animal, comprar animales, entre otros... fueron desafíos relativamente complejos que necesitaron bastante tiempo para ser programados en lo que es actualmente en el proyecto.
+
+ ## Diagrama de casos
+ ![Diagrama](https://github.com/Kingsephir/Farm-Simulator/blob/main/CaseDiagram.png)
+
