@@ -15,7 +15,6 @@ public class Habitat {
     private AnimalTypes habitatType;
     private ArrayList<Animal> animalsInTheHabitat;
     private FoodDeposit foodDeposit;
-    private int foodReserve;
 
     /**
      * Constructor de la clase, inicializa todos los parametros necesarios de un habitat
@@ -24,7 +23,6 @@ public class Habitat {
         this.isActive = false;
         this.foodDeposit = new FoodDeposit();
         this.animalsInTheHabitat = new ArrayList<>();
-        this.foodReserve = MAX_FOOD;
         this.habitatType = null;
         this.actualCapacity = 0;
     }
@@ -43,6 +41,10 @@ public class Habitat {
      */
     public int getAnimalQuantity(){
         return actualCapacity;
+    }
+
+    public int getAnimalQuantityLimit(){
+        return MAX_CAPACITY;
     }
 
     /**
@@ -170,7 +172,11 @@ public class Habitat {
         this.MAX_FOOD += 10;
     }
 
+    public FoodDeposit getFoodDeposit() {
+        return foodDeposit;
+    }
+
     public int getFoodReserve(){
-        return foodReserve;
+        return MAX_FOOD;
     }
 }
