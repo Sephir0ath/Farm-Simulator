@@ -15,6 +15,7 @@ public class Habitat {
     private AnimalTypes habitatType;
     private ArrayList<Animal> animalsInTheHabitat;
     private FoodDeposit foodDeposit;
+    private HitboxDeposit hitboxDeposit;
 
     /**
      * Constructor de la clase, inicializa todos los parametros necesarios de un habitat
@@ -178,5 +179,14 @@ public class Habitat {
 
     public int getFoodReserve(){
         return MAX_FOOD;
+    }
+
+
+    public void setHitboxDeposit(HitboxDeposit hitboxDeposit){
+        this.hitboxDeposit = hitboxDeposit;
+    }
+
+    public HitboxDeposit getHitboxDeposit(){
+        return this.hitboxDeposit;
     }
 }

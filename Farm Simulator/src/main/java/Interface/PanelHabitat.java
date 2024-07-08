@@ -9,9 +9,11 @@ public class PanelHabitat extends JPanel {
     private static boolean resized = false;
     private Habitat habitat;
     private HitboxAnimal hitboxAnimal = null;
+    private HitboxDeposit hitboxDeposit;
     public PanelHabitat(){
         setOpaque(false);
         habitat = new Habitat();
+        habitat.setHitboxDeposit(new HitboxDeposit(this.getLocationOfHabitat()));
     }
 
     public Habitat getLogicHabitat(){

@@ -1,5 +1,7 @@
 package Interface;
 
+import Logic.*;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -16,15 +18,12 @@ public class PanelStatsDeposit extends JPanel{
 
     public void CreateInterfazDeposit() {
         this.setBounds((int) positionMouseToPanel.getX(), (int) positionMouseToPanel.getY()-47, 100, 100);
-        this.setLayout(new BorderLayout());
         JLabel labelFood = new JLabel("Comida: " + habitat.getFoodDeposit().getActualFoodInDeposit() + "/"+ habitat.getFoodReserve());
         JLabel labelAnimals = new JLabel("Animales: " + habitat.getAnimalQuantity() + "/" + habitat.getAnimalQuantityLimit());
         this.add(labelFood);
+        this.add(labelAnimals);
 
-        // Añadir al JLayeredPane (capa)
         layeredPane.add(this, JLayeredPane.POPUP_LAYER);
-
-        // Actualizar el JLayeredPane (capa)
         layeredPane.revalidate();
         layeredPane.repaint();
     }
