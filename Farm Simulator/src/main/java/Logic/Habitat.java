@@ -59,7 +59,7 @@ public class Habitat {
                     }
                 }
             }
-        }, 0, 3000, TimeUnit.MILLISECONDS);
+        }, 0, 4500, TimeUnit.MILLISECONDS);
     }
 
     /**
@@ -102,6 +102,7 @@ public class Habitat {
     public boolean checkIfAnimalCorrespondsToHabitat(Animal animal){
         if (this.habitatType == null || animal.getAnimalType() == this.habitatType){
             this.habitatType = animal.getAnimalType();
+            this.foodDeposit.setDepositType(animal);
             return true;
         }
         return false;
@@ -131,6 +132,7 @@ public class Habitat {
         if (checkIsHabitatActive() && actualAnimalQuantity == 0){
             isActive = false;
             habitatType = null;
+            foodDeposit = new FoodDeposit();
         }
     }
 

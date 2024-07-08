@@ -1,8 +1,8 @@
 import Exceptions.AnimalTypeDifferentFromHabitatTypeException;
 import Exceptions.FullCapacityException;
-import Logic.Animals.Animal;
-import Logic.Animals.Cow;
-import Logic.Animals.Pig;
+import Logic.Animal;
+import Logic.Cow;
+import Logic.Pig;
 import Logic.Habitat;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
