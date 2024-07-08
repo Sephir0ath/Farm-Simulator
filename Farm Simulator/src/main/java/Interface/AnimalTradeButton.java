@@ -31,6 +31,7 @@ public class AnimalTradeButton extends JButton{
                 // Remover la hitbox del contenedor
                 habitat.deleteAnimal(animal);
                 layeredpane.remove(panelanimalstats);
+                PlayerInfo.getInstance().addToStat(0, animal.calculateSellValue());
 
                 // Revalidar y repintar el panel para reflejar los cambios
                 layeredpane.revalidate();

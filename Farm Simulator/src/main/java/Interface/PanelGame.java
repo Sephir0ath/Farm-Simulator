@@ -141,6 +141,12 @@ public class PanelGame extends JPanel {
         timer.start();
     }
 
+    public void checkAndUpdateHabitatStatus(){
+        for (int i = 0; i < habitats.size(); i++){
+            habitats.get(i).getLogicHabitat().checkAndDeactivateHabitatIfIsEmpty();
+        }
+    }
+
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("pasto.png"))).getImage(), 0, 154, null);

@@ -25,8 +25,7 @@ public class PanelAnimalStats extends JPanel {
         this.add(new JLabel("Hola"), BorderLayout.CENTER);
         JLabel labelFood = new JLabel("Comida: " + animal.getActualFood());
         this.add(labelFood);
-        this.add(new AnimalTradeButton("Vender", this, animal, habitat, hitboxanimal), BorderLayout.SOUTH);
-
+        this.add(new AnimalTradeButton("Vender: " + animal.calculateSellValue(), this, animal, habitat, hitboxanimal), BorderLayout.SOUTH);
         // Añadir al JLayeredPane (capa)
         layeredPane.add(this, JLayeredPane.POPUP_LAYER);
 

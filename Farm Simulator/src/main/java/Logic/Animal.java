@@ -2,6 +2,7 @@ package Logic;
 
 import java.util.Random;
 import java.awt.*;
+import java.time.Instant;
 
 /**
  * Clase abstracta que representa a un Animal con sus propiedades
@@ -11,6 +12,7 @@ public abstract class Animal {
     private int actualFood;
     private final Point ubicacionInicial;
     private Point ubicacion;
+    private Instant horaCreado;
     private Point initialLimits;
     private Point finalLimits;
     private HitboxAnimal hitboxAnimal = null;
@@ -27,6 +29,7 @@ public abstract class Animal {
         this.ubicacionInicial = new Point(100 + (int) initialLimits.getX(), 90 + (int) initialLimits.getY());
         this.actualFood = MAX_FOOD;
         this.ubicacion = ubicacionInicial;
+        this.horaCreado = Instant.now();
     }
 
     public int getActualFood(){
@@ -95,6 +98,10 @@ public abstract class Animal {
      */
     public Point getLocation(){
         return ubicacion;
+    }
+
+    public int calculateSellValue(){
+        return (int)(Instant.now().getEpochSecond() - horaCreado.getEpochSecond()) + getAnimalType().getPrice()/2;
     }
 
     public void setHitboxAnimal(HitboxAnimal hitboxAnimal){

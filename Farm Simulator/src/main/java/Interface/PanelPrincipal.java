@@ -35,6 +35,7 @@ public class PanelPrincipal extends JPanel {
                 panelStats.updateStatsPanels(playerInfo);
                 panelGame.updateMovements();
                 panelGame.updateAnimalQuantity();
+                panelGame.checkAndUpdateHabitatStatus();
 
                 Window.frame().repaint();
 
