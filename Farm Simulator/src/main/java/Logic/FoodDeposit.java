@@ -39,9 +39,9 @@ public class FoodDeposit {
                 PlayerInfo.getInstance().addToStat(3, 1);
             }
         } else {
+            new MessageWindow("Comprando menos comida por el mismo precio (deposito casi lleno)");
             for (int i = 0; i < maxHabitatFoodQuantity - getActualFoodInDeposit(); i++) {
                 this.foodInDeposit.add(food);
-                new MessageWindow("Comprando menos comida por el mismo precio (deposito casi lleno)");
                 PlayerInfo.getInstance().addToStat(3, 1);
             }
         }
