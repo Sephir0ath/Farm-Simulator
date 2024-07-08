@@ -5,51 +5,54 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Clase que representa un JPanel de selección para acceder a distintos submenús del juego
+ */
 public class PanelSelections extends JPanel {
-    private JButton buttonCheatsMenuSection;
-    private JButton buttonAnimalMenuSection;
-    private JButton buttonFoodMenuSection;
-    private JButton buttonGoBack;
-    private JButton buttonUpgrades;
+    /**
+     * Constructor de la clase, inicializa y agrega los botones
+     * que servirán para seleccionar los distintos tipos de menú en el juego.
+     */
     public PanelSelections(){
         super();
         setPreferredSize(new Dimension(200, 100));
         setLayout(new GridLayout(2, 2));
 
-        buttonCheatsMenuSection = new JButton();
+        JButton buttonCheatsMenuSection = new JButton();
+        JButton buttonAnimalMenuSection = new JButton();
+        JButton buttonFoodMenuSection = new JButton();
+        JButton buttonUpgrades = new JButton();
+
         buttonCheatsMenuSection.setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonCheats.png")));
-        buttonAnimalMenuSection = new JButton();
         buttonAnimalMenuSection.setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonAnimals.png")));
-        buttonFoodMenuSection = new JButton();
         buttonFoodMenuSection.setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonFood.png")));
-        buttonUpgrades = new JButton();
         buttonUpgrades.setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonGoback.png")));
 
         buttonAnimalMenuSection.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PanelBuyMenu.getInstance().showPanel("Animals");
+                PanelSelectionsMenu.getInstance().showPanel("Animals");
             }
         });
 
         buttonFoodMenuSection.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PanelBuyMenu.getInstance().showPanel("Food");
+                PanelSelectionsMenu.getInstance().showPanel("Food");
             }
         });
 
         buttonUpgrades.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PanelBuyMenu.getInstance().showPanel("Upgrades");;
+                PanelSelectionsMenu.getInstance().showPanel("Upgrades");;
             }
         });
 
         buttonCheatsMenuSection.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PanelBuyMenu.getInstance().showPanel("Cheats");
+                PanelSelectionsMenu.getInstance().showPanel("Cheats");
             }
         });
 
@@ -59,6 +62,10 @@ public class PanelSelections extends JPanel {
         this.add(buttonUpgrades);
     }
 
+    /**
+     * Metodo que pinta el fondo del panel
+     * @param g Parametro tipo Graphics usado para dibujar los componentes
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);

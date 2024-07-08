@@ -9,13 +9,11 @@ import java.awt.event.*;
 public class AnimalTradeButton extends JButton{
     private Animal animal;
     private JLayeredPane layeredpane;
-    private Rectangle hitboxAnimal;
     private PanelAnimalStats panelanimalstats;
     private Habitat habitat;
     public AnimalTradeButton(String text, PanelAnimalStats panelanimalstats, Animal animal, Habitat habitat, Rectangle hitboxAnimal) {
         this.panelanimalstats = panelanimalstats;
         this.animal = animal;
-        this.hitboxAnimal = hitboxAnimal;
         this.layeredpane = panelanimalstats.getLayeredPane();
         this.habitat = habitat;
         this.animal = animal;
@@ -38,7 +36,6 @@ public class AnimalTradeButton extends JButton{
                 layeredpane.repaint();
 
                 // Actualizar la referencia del panelanimalstats
-                hitboxAnimal = null;
                 panelanimalstats = null;
             }
         });

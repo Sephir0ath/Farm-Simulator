@@ -5,9 +5,11 @@ import Logic.*;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Clase que representa un JPanel, en este se encuentra el sub-menú para la compra de animales
+ */
 public class PanelAnimalBuyMenu extends JPanel {
     private CowButton cowButton;
-
     public PanelAnimalBuyMenu(){
         super();
         this.setLayout(new GridLayout(3, 2));

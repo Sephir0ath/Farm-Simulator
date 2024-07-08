@@ -11,17 +11,18 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Clase que representa un JButton, el cual compra un animal.
+ */
 public class AnimalBuyButton extends JButton {
     private ScheduledExecutorService scheduler;
     private Animal animal;
     private AnimalTypes typeOfAnimal;
     private boolean isThisButtonPressed;
-
     public AnimalBuyButton(AnimalTypes animalType){
         super(animalType.getAnimal() + " " + animalType.getPrice() + "$");
         this.typeOfAnimal = animalType;
         this.isThisButtonPressed = false;
-
         this.scheduler = new ScheduledThreadPoolExecutor(1);
         scheduler.scheduleAtFixedRate(new Runnable() {
             @Override
@@ -40,22 +41,17 @@ public class AnimalBuyButton extends JButton {
                             PanelGame.getInstance().getClickedHabitat().getLogicHabitat().addAnimalToHabitat(animal);
                             PanelGame.getInstance().getClickedHabitat().getLogicHabitat().setActive();
                             PlayerInfo.getInstance().addToStat(0, -typeOfAnimal.getPrice());
-
                         }
-
                         else {
                             new MessageWindow("No tienes suficiente dinero");
                         }
                     }
-
                     catch (FullCapacityException e) {
                         new MessageWindow("Habitat lleno");
                     }
-
                     catch (AnimalTypeDifferentFromHabitatTypeException e) {
                         new MessageWindow("No puedes colocar ese tipo de animal allí");
                     }
-
                     finally {
                         PanelGame.getInstance().setClickedHabitatToNull();
                         isThisButtonPressed = false;
@@ -63,7 +59,6 @@ public class AnimalBuyButton extends JButton {
                 }
             }
         }, 0, 10, TimeUnit.MILLISECONDS);
-
         this.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -72,9 +67,7 @@ public class AnimalBuyButton extends JButton {
             }
         });
     }
-
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-
     }
 }

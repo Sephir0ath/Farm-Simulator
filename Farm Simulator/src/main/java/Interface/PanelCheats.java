@@ -7,17 +7,22 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Panel que representa un JPanel, es el sub-menu de Trucos del menu
+ */
 public class PanelCheats extends JPanel {
     private JButton addMoneyToPlayer;
     private JButton resetAllHabitats;
     private JButton resetEverything;
 
+    /**
+     * Constructor de la clase, añade los botones y los actionlistener de estos
+     */
     public PanelCheats(){
         super();
         this.setLayout(new GridLayout(3, 2));
 
         addMoneyToPlayer = new JButton("Añadir dinero");
-        // addMoneyToPlayer.setIcon(new ImageIcon(getClass().getClassLoader().getResource(".png"))); tamaño:
         resetAllHabitats = new JButton("Resetear habitats");
         resetEverything = new JButton("Resetear todo");
 
