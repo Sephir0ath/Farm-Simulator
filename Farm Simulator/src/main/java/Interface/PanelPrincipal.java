@@ -35,6 +35,8 @@ public class PanelPrincipal extends JPanel {
             public void run() {
                 panelStats.updateStatsPanels(playerInfo);
                 panelGame.updateMovements();
+                panelGame.updateAnimalQuantity();
+
                 Window.frame().repaint();
 
             }
@@ -44,17 +46,7 @@ public class PanelPrincipal extends JPanel {
         moneyScheduler.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
-                int counter = 0;
-                ArrayList<PanelHabitat> habitats =  panelGame.getHabitats();
-                for (int i = 0; i < habitats.size(); i++) {
-                    counter += habitats.get(i).getLogicHabitat().getAnimalQuantity();
-                    for (int j = 0; j < habitats.get(i).getLogicHabitat().getAnimalsInTheHabitat().size(); j++){
-                        habitats.get(i).getLogicHabitat().getAnimalsInTheHabitat().get(j).giveMoneyEachSecond();
 
-                    }
-                }
-
-                PlayerInfo.getInstance().setStats(1, counter);
             }
         }, 0, 1000, TimeUnit.MILLISECONDS);
 

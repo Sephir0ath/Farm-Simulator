@@ -1,5 +1,7 @@
 package Interface;
 
+import Logic.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -54,6 +56,18 @@ public class PanelGame extends JPanel {
         return instance;
     }
 
+    public void updateAnimalQuantity(){
+        int counter = 0;
+        ArrayList<PanelHabitat> habitats =  this.getHabitats();
+        for (int i = 0; i < habitats.size(); i++) {
+            counter += habitats.get(i).getLogicHabitat().getAnimalQuantity();
+            for (int j = 0; j < habitats.get(i).getLogicHabitat().getAnimalsInTheHabitat().size(); j++){
+                habitats.get(i).getLogicHabitat().getAnimalsInTheHabitat().get(j).giveMoneyEachSecond();
+            }
+        }
+
+        PlayerInfo.getInstance().setStats(1, counter);
+    }
 
     public void setClickedHabitat(Point mouseLocation){
         int row = (int) mouseLocation.getY() / (this.getHeight() / 4);

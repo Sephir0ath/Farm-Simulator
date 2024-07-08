@@ -16,9 +16,9 @@ public class PanelCheats extends JPanel {
         super();
         this.setLayout(new GridLayout(3, 2));
 
-        addMoneyToPlayer = new JButton("Add Money");
-        resetAllHabitats = new JButton("Reset Habitats");
-        resetEverything = new JButton();
+        addMoneyToPlayer = new JButton("Añadir dinero");
+        resetAllHabitats = new JButton("Resetear habitats");
+        resetEverything = new JButton("Resetear todo");
 
         addMoneyToPlayer.addActionListener(new ActionListener() {
             @Override

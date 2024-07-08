@@ -1,12 +1,12 @@
 package Logic;
 
 public enum AnimalTypes {
-    GALLINA("Chicken", 100, 0.1),
-    VACAS("Cow" ,250, 0.2),
-    CABRA("Goat", 500, 0.5),
-    OVEJA("Sheep", 500, 0.3),
-    CERDO("Pig", 350, 0.5),
-    CABALLO("Horse", 7000, 10);
+    GALLINA("Pollo", 100, 0.1),
+    VACAS("Vaca" ,250, 0.2),
+    CABRA("Cabra", 500, 0.5),
+    OVEJA("Oveja", 500, 0.3),
+    CERDO("Cerdo", 350, 0.5),
+    CABALLO("Caballo", 7000, 10);
 
     private final String animal;
     private final int price;
