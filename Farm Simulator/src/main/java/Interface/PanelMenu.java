@@ -11,13 +11,11 @@ public class PanelMenu extends JPanel {
 
     public PanelMenu(PlayerInfo playerInfo){
         super();
-        this.setBackground(Color.GRAY);
         this.setLayout(new BorderLayout());
 
         panelBuyMenu = new PanelBuyMenu();
         panelSelections = new PanelSelections();
         this.add(panelBuyMenu, BorderLayout.CENTER);
         this.add(panelSelections, BorderLayout.NORTH);
-
     }
 }

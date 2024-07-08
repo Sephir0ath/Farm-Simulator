@@ -13,15 +13,17 @@ public class PanelSelections extends JPanel {
 
     public PanelSelections(){
         super();
-        this.setPreferredSize(new Dimension(200, 100));
-        this.setLayout(new GridLayout(2, 2));
-        this.setBackground(Color.GRAY);
+        setPreferredSize(new Dimension(200, 100));
+        setLayout(new GridLayout(2, 2));
 
-        buttonCheatsMenuSection = new JButton("Cheats");
-        buttonAnimalMenuSection = new JButton("Animales");
-        buttonFoodMenuSection = new JButton("Comida");
-        buttonGoBack = new JButton("Volver");
-
+        buttonCheatsMenuSection = new JButton();
+        buttonCheatsMenuSection.setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonCheats.png")));
+        buttonAnimalMenuSection = new JButton();
+        buttonAnimalMenuSection.setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonAnimals.png")));
+        buttonFoodMenuSection = new JButton();
+        buttonFoodMenuSection.setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonFood.png")));
+        buttonGoBack = new JButton();
+        buttonGoBack.setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonGoback.png")));;
 
         buttonAnimalMenuSection.addActionListener(new ActionListener() {
             @Override
@@ -51,12 +53,16 @@ public class PanelSelections extends JPanel {
             }
         });
 
-
-
         this.add(buttonAnimalMenuSection);
         this.add(buttonCheatsMenuSection);
         this.add(buttonFoodMenuSection);
         this.add(buttonGoBack);
     }
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.setColor(Color.BLUE);
+        g.fillRect(0, 0, getWidth(), getHeight());
+    }
 }

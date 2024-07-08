@@ -17,6 +17,7 @@ public class PanelCheats extends JPanel {
         this.setLayout(new GridLayout(3, 2));
 
         addMoneyToPlayer = new JButton("Añadir dinero");
+        // addMoneyToPlayer.setIcon(new ImageIcon(getClass().getClassLoader().getResource(".png"))); tamaño:
         resetAllHabitats = new JButton("Resetear habitats");
         resetEverything = new JButton("Resetear todo");
 

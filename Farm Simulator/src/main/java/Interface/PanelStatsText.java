@@ -25,7 +25,7 @@ public class PanelStatsText extends JPanel {
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
         g.setColor(Color.lightGray);
-        g.fillRect(0,0, this.getWidth(), this.getHeight());
+        g.fillRect(0,0, 396, 50);
 
         g.setColor(Color.BLACK);
         g.setFont(new Font("Arial", Font.BOLD, 10));

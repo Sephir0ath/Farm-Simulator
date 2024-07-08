@@ -7,17 +7,14 @@ public class Window extends JFrame {
     private static Window instance;
 
     public Window(){
-        super("Zoo Simulator");
-        this.setSize(new Dimension(1200, 700));
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        super("Farm Simulator");
+        setSize(new Dimension(1200, 700));
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         instance = this;
-        this.setResizable(true);
-        this.setMinimumSize(new Dimension(800, 700));
-        this.add(new PanelPrincipal());
-
-
-
-        this.setVisible(true);
+        setResizable(true);
+        setMinimumSize(new Dimension(800, 700));
+        add(new PanelPrincipal());
+        setVisible(true);
     }
 
     public static synchronized Window frame(){

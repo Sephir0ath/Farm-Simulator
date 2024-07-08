@@ -3,6 +3,7 @@ package Interface;
 import Logic.*;
 import Exceptions.*;
 
+import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -70,5 +71,10 @@ public class AnimalBuyButton extends JButton {
                 isThisButtonPressed = true;
             }
         });
+    }
+
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
     }
 }

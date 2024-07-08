@@ -13,21 +13,22 @@ public class PanelGame extends JPanel {
     private static PanelGame instance;
     private static boolean selectionMode;
     private PanelHabitat clickedHabitat;
+    private final Cielo cielo;
     public PanelGame(){
         super();
-        this.habitats = new ArrayList<>();
-        this.setLayout(new GridLayout(4, 3));
+        habitats = new ArrayList<>();
+        setLayout(new GridLayout(4, 3));
         instance = this;
         selectionMode = false;
         clickedHabitat = null;
+        cielo = Cielo.getInstance();
 
-        JLabel a = new JLabel();
-        JLabel b = new JLabel();
-        JLabel c = new JLabel();
-        // todo Labels para mostrar el fondo de la primera fila, por ahora serán labels vacios
-        this.add(a);
-        this.add(b);
-        this.add(c);
+        JLabel cielo1 = new JLabel();
+        JLabel cielo2 = new JLabel();
+        JLabel cielo3 = new JLabel();
+        add(cielo1);
+        add(cielo2);
+        add(cielo3);
 
         for (int i = 0; i < 9; i++) {
             habitats.add(new PanelHabitat());
@@ -106,9 +107,35 @@ public class PanelGame extends JPanel {
 
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
+        g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("pasto.png")).getImage(), 0, 154, null);
+        if (cielo.getCielo() == "dia") {
+            g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("dia.png")).getImage(), 0, 0, null);
+        }
+        else if (cielo.getCielo() == "tarde") {
+            g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("tarde.png")).getImage(), 0, 0, null);
+        }
+        else {
+            g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("noche.png")).getImage(), 0, 0, null);
+
+        }
+        /*g.setColor(Color.BLUE);
+        g.fillRect(0, 0, 966, 154);*/
         for (PanelHabitat habitatPanel : habitats) {
-            habitatPanel.paintHabitatBackground(g);
+            // habitatPanel.paintHabitatBackground(g);
             habitatPanel.paintAnimals(g);
         }
+
+        /*g.setColor(Color.GREEN);
+        g.fillRect(0, 154, 322, 460);
+        g.setColor(Color.RED);
+        g.fillRect(322, 154, 322, 460);
+        g.setColor(Color.GREEN);
+        g.fillRect(644, 154, 322, 460);
+        g.setColor(Color.RED);
+        g.fillRect(0, 308, 966, 154);
+        g.setColor(Color.GREEN);
+        g.fillRect(322, 308, 322, 154);
+        g.setColor(Color.yellow);
+        g.fillRect(0, 0, 966, 614);*/
     }
 }

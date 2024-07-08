@@ -13,12 +13,12 @@ public class PanelBuyMenu extends JPanel {
 
     public PanelBuyMenu(){
         super();
+        setOpaque(false);
         this.panelAnimalBuyMenu = new PanelAnimalBuyMenu();
         this.panelFoodBuyMenu = new PanelFoodBuyMenu();
         this.panelCheats = new PanelCheats();
         this.cardLayout = new CardLayout();
         this.panelDefault = new JPanel();
-        panelDefault.setBackground(Color.GRAY);
         this.setLayout(cardLayout);
         instance = this;
 
@@ -32,13 +32,17 @@ public class PanelBuyMenu extends JPanel {
         cardLayout.show(this, panelName);
     }
 
-
     public static PanelBuyMenu getInstance(){
         if (instance == null) {
             instance = new PanelBuyMenu();
         }
-
         return instance;
     }
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.setColor(Color.BLUE);
+        g.fillRect(0, 0, getWidth(), getHeight());
+    }
 }
