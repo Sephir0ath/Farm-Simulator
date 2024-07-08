@@ -13,6 +13,8 @@ public abstract class Animal {
     private Point ubicacion;
     private Point initialLimits;
     private Point finalLimits;
+    private final HitboxAnimal hitboxAnimalInicial;  //Hitbox inicial
+    private HitboxAnimal hitboxAnimal;  //Hitbox se usara en animal
     Random random = new Random();
 
     /**
@@ -23,9 +25,12 @@ public abstract class Animal {
     public Animal(Point initialLimits, Point finalLimits){
         this.initialLimits = initialLimits;
         this.finalLimits = finalLimits;
-        this.ubicacionInicial = new Point(100 + (int)initialLimits.getX(), 90 + (int)initialLimits.getY());
+        this.ubicacionInicial = new Point(100 + (int) initialLimits.getX(), 90 + (int) initialLimits.getY());
+        this.hitboxAnimalInicial = new HitboxAnimal(ubicacionInicial, this);  //Le doy la hitbox inicial
         this.actualfood = MAX_FOOD;
         this.ubicacion = ubicacionInicial;
+        this.hitboxAnimal = hitboxAnimalInicial;  //doy hitbox actual
+        this.hitboxAnimal.cursorInAnimal();
     }
 
     /**
@@ -82,6 +87,9 @@ public abstract class Animal {
         }
 
         ubicacion.setLocation(newX, newY);
+
+        //Agregado para actualizar la hitbox
+        hitboxAnimal.updateHitbox(ubicacion);
     }
 
     /**
@@ -91,4 +99,9 @@ public abstract class Animal {
     public Point getLocation(){
         return ubicacion;
     }
+
+    /*funcion para obtener la hitbox
+    public Hitbox getAnimalHitbox(){
+        return hitbox;
+    }*/
 }
