@@ -8,7 +8,7 @@ import java.awt.*;
  */
 public abstract class Animal {
     private final int MAX_FOOD = 20;
-    private int actualfood;
+    private int actualFood;
     private final Point ubicacionInicial;
     private Point ubicacion;
     private Point initialLimits;
@@ -25,8 +25,12 @@ public abstract class Animal {
         this.initialLimits = initialLimits;
         this.finalLimits = finalLimits;
         this.ubicacionInicial = new Point(100 + (int) initialLimits.getX(), 90 + (int) initialLimits.getY());
-        this.actualfood = MAX_FOOD;
+        this.actualFood = MAX_FOOD;
         this.ubicacion = ubicacionInicial;
+    }
+
+    public int getActualFood(){
+        return actualFood;
     }
 
     /**
@@ -34,7 +38,7 @@ public abstract class Animal {
      * @return booleano que indica si actualFood es 0
      */
     public boolean checkIfAnimalFoodIsZero(){
-        return actualfood == 0;
+        return actualFood == 0;
     }
 
     /**

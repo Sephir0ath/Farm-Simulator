@@ -39,6 +39,6 @@ public class PanelPrincipal extends JPanel {
                 Window.frame().repaint();
 
             }
-        }, 0, 100, TimeUnit.MILLISECONDS);
+        }, 0, 200, TimeUnit.MILLISECONDS);
     }
 }

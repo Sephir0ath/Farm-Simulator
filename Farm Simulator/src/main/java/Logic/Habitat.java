@@ -123,6 +123,13 @@ public class Habitat {
         }
     }
 
+    public void deleteAnimal(Animal animal){
+        if (animalsInTheHabitat.contains(animal)){
+            animalsInTheHabitat.remove(animal);
+            actualCapacity -= 1;
+        }
+    }
+
     public void increaseAnimalLimit(){
         this.MAX_CAPACITY++;
     }

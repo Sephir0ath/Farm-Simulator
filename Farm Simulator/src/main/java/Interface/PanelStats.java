@@ -6,9 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PanelStats extends JPanel {
-    PanelStatsText panelMoney;
-    PanelStatsText panelAnimalQuantity;
-    PanelStatsText panelFoodQuantity;
+    private PanelStatsText panelMoney;
+    private PanelStatsText panelAnimalQuantity;
+    private PanelStatsText panelFoodQuantity;
 
     public PanelStats(PlayerInfo playerInfo) {
         super();

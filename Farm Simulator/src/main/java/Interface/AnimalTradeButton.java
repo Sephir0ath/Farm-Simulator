@@ -9,30 +9,36 @@ import java.awt.event.*;
 public class AnimalTradeButton extends JButton{
     private Animal animal;
     private JLayeredPane layeredpane;
-    private Rectangle hitboxanimal;
+    private Rectangle hitboxAnimal;
     private PanelAnimalStats panelanimalstats;
-    public AnimalTradeButton(String text, PanelAnimalStats panelanimalstats) {
+    private Habitat habitat;
+    public AnimalTradeButton(String text, PanelAnimalStats panelanimalstats, Animal animal, Habitat habitat, Rectangle hitboxAnimal) {
         this.panelanimalstats = panelanimalstats;
-        this.animal = this.panelanimalstats.animal;
-        this.hitboxanimal = this.panelanimalstats.hitboxanimal;
-        this.layeredpane = this.panelanimalstats.layeredPane;
+        this.animal = animal;
+        this.hitboxAnimal = hitboxAnimal;
+        this.layeredpane = panelanimalstats.getLayeredPane();
+        this.habitat = habitat;
+        this.animal = animal;
         this.setText(text);
         this.botonPresionado();
     }
 
-    //Falta lograr que al vende el animal desaparezca y entregue dinero de venta
+    // Actualiza el metodo botonPresionado
     private void botonPresionado() {
         this.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Window.frame() != null && animal != null && panelanimalstats != null && hitboxanimal != null) {
-                    animal = null;
-                    hitboxanimal = null;
-                    panelanimalstats.removeInterfazAnimal();
-                    layeredpane.revalidate();
-                    layeredpane.repaint();
-                    System.out.println("Vendido");
-                }
+                // Remover la hitbox del contenedor
+                habitat.deleteAnimal(animal);
+                layeredpane.remove(panelanimalstats);
+
+                // Revalidar y repintar el panel para reflejar los cambios
+                layeredpane.revalidate();
+                layeredpane.repaint();
+
+                // Actualizar la referencia del panelanimalstats
+                hitboxAnimal = null;
+                panelanimalstats = null;
             }
         });
     }

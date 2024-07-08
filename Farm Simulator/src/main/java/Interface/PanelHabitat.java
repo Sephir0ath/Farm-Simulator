@@ -50,7 +50,7 @@ public class PanelHabitat extends JPanel {
             if(habitat.getAnimalsInTheHabitat().get(j).getHitboxAnimal() == null) {
                 this.hitboxAnimal = new HitboxAnimal(location);
                 habitat.getAnimalsInTheHabitat().get(j).setHitboxAnimal(this.hitboxAnimal);
-                PanelGame.getInstance().cursorIsOnHitbox(this.hitboxAnimal);
+                PanelGame.getInstance().cursorIsOnHitbox(this.hitboxAnimal, habitat, habitat.getAnimalsInTheHabitat().get(j));
             }
             else{
                 habitat.getAnimalsInTheHabitat().get(j).getHitboxAnimal().updateHitbox(location);

@@ -9,7 +9,6 @@ import java.util.Objects;
 import java.awt.event.*;
 
 public class PanelGame extends JPanel {
-
     private final ArrayList<PanelHabitat> habitats;
     private static PanelGame instance;
     private static boolean selectionMode;
@@ -107,7 +106,7 @@ public class PanelGame extends JPanel {
         }
     }
 
-    public void cursorIsOnHitbox(HitboxAnimal hitbox) {
+    public void cursorIsOnHitbox(HitboxAnimal hitbox, Habitat habitat, Animal animal) {
         Timer timer = new Timer(500, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -117,7 +116,7 @@ public class PanelGame extends JPanel {
                     if (hitbox.hitboxIsVisible()) {
                         if (hitbox.getHitbox().contains(mouseLocationRelativeToPanel) && PanelGame.getInstance().contains(mouseLocationRelativeToPanel)) {
                             if (panelanimalstats == null) {
-                                panelanimalstats = new PanelAnimalStats(hitbox.getHitbox(), mouseLocationRelativeToPanel);
+                                panelanimalstats = new PanelAnimalStats(hitbox.getHitbox(), mouseLocationRelativeToPanel, animal, habitat);
                                 panelanimalstats.CreateInterfazAnimal();
                             }
                         }
@@ -154,8 +153,7 @@ public class PanelGame extends JPanel {
         else {
             g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("noche.png"))).getImage(), 0, 0, null);
         }
-        /*g.setColor(Color.BLUE);
-        g.fillRect(0, 0, 966, 154);*/
+
         for (PanelHabitat habitatPanel : habitats) {
             // habitatPanel.paintHabitatBackground(g);
             habitatPanel.paintAnimals(g);
