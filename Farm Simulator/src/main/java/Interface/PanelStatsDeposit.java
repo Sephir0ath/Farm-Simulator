@@ -20,8 +20,12 @@ public class PanelStatsDeposit extends JPanel{
         this.setBounds((int) positionMouseToPanel.getX(), (int) positionMouseToPanel.getY()-47, 100, 100);
         JLabel labelFood = new JLabel("Comida: " + habitat.getFoodDeposit().getActualFoodInDeposit() + "/"+ habitat.getFoodReserve());
         JLabel labelAnimals = new JLabel("Animales: " + habitat.getAnimalQuantity() + "/" + habitat.getAnimalQuantityLimit());
+        JLabel labelTypeOfHabitat = new JLabel("Tipo:" + habitat.getHabitatType());
+        JLabel labelTypeOfFood = new JLabel("Recibe: \n" + habitat.getFoodDeposit().getDepositType());
         this.add(labelFood);
         this.add(labelAnimals);
+        this.add(labelTypeOfHabitat);
+        this.add(labelTypeOfFood);
 
         layeredPane.add(this, JLayeredPane.POPUP_LAYER);
         layeredPane.revalidate();

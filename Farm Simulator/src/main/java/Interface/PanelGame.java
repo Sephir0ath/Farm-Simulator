@@ -142,6 +142,34 @@ public class PanelGame extends JPanel {
         timer.start();
     }
 
+    public void cursorIsOnDeposit(HitboxDeposit hitbox, Habitat habitat) {
+        Timer timer = new Timer(500, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Point mouseLocationRelativeToPanel = PanelGame.getInstance().getMousePosition();
+                if (mouseLocationRelativeToPanel != null) {
+                    if (hitbox.hitboxIsVisible()) {
+                        if (hitbox.getHitbox().contains(mouseLocationRelativeToPanel) && PanelGame.getInstance().contains(mouseLocationRelativeToPanel)) {
+                            if (panelStatsDeposit == null) {
+                                panelStatsDeposit = new PanelStatsDeposit(mouseLocationRelativeToPanel, habitat);
+                                panelStatsDeposit.CreateInterfazDeposit();
+                            }
+                        } else {
+                            if (panelStatsDeposit != null) {
+                                if (!hitbox.getHitbox().contains(mouseLocationRelativeToPanel)) {
+                                    panelStatsDeposit.removeInterfazDeposit();
+                                    panelStatsDeposit = null;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        timer.start();
+    }
+
+
     public void checkAndUpdateHabitatStatus(){
         for (int i = 0; i < habitats.size(); i++){
             habitats.get(i).getLogicHabitat().checkAndDeactivateHabitatIfIsEmpty();
@@ -169,6 +197,7 @@ public class PanelGame extends JPanel {
 
         if (selectionMode) {
             for (int i = 0; i < habitats.size(); i++) {
+                habitats.get(i).getLogicHabitat().getHitboxDeposit().hideHitbox();
                 for (int j = 0; j < habitats.get(i).getLogicHabitat().getAnimalsInTheHabitat().size(); j++) {  //Agregado para ocultar las hitbox, SUJETO A CAMBIOS
                     //Agregado para ocultar las hitbox, SUJETO A CAMBIOS
                     habitats.get(i).getLogicHabitat().getAnimalsInTheHabitat().get(j).getHitboxAnimal().hideHitbox();
@@ -179,6 +208,7 @@ public class PanelGame extends JPanel {
         //Agregado para mostrar las hitbox, SUJETO A CAMBIOS
         else {
             for (int i = 0; i < habitats.size(); i++) {
+                habitats.get(i).getLogicHabitat().getHitboxDeposit().showHitbox();
                 for (int j = 0; j < habitats.get(i).getLogicHabitat().getAnimalsInTheHabitat().size(); j++) {
                     if(!habitats.get(i).getLogicHabitat().getAnimalsInTheHabitat().get(j).getHitboxAnimal().hitboxIsVisible()) {
                         habitats.get(i).getLogicHabitat().getAnimalsInTheHabitat().get(j).getHitboxAnimal().showHitbox();

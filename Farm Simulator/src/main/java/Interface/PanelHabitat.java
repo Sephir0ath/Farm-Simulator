@@ -9,11 +9,10 @@ public class PanelHabitat extends JPanel {
     private static boolean resized = false;
     private Habitat habitat;
     private HitboxAnimal hitboxAnimal = null;
-    private HitboxDeposit hitboxDeposit;
+    private HitboxDeposit hitboxDeposit = null;
     public PanelHabitat(){
         setOpaque(false);
         habitat = new Habitat();
-        habitat.setHitboxDeposit(new HitboxDeposit(this.getLocationOfHabitat()));
     }
 
     public Habitat getLogicHabitat(){
@@ -36,6 +35,11 @@ public class PanelHabitat extends JPanel {
     }
 
     public void setHitbox(){
+        if(hitboxDeposit == null) {
+            hitboxDeposit = new HitboxDeposit(this.getLocationOfHabitat());
+            PanelGame.getInstance().cursorIsOnDeposit(hitboxDeposit, habitat);
+            habitat.setHitboxDeposit(hitboxDeposit);
+        }
         for (int j = 0; j < habitat.getAnimalsInTheHabitat().size(); j++) {
             Point location = habitat.getAnimalsInTheHabitat().get(j).getLocation();
             if(habitat.getAnimalsInTheHabitat().get(j).getHitboxAnimal() == null) {
