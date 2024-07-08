@@ -26,7 +26,7 @@ public class PanelSelections extends JPanel {
         buttonCheatsMenuSection.setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonCheats.png")));
         buttonAnimalMenuSection.setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonAnimals.png")));
         buttonFoodMenuSection.setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonFood.png")));
-        buttonUpgrades.setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonGoback.png")));
+        buttonUpgrades.setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonUpgrade.png")));
 
         buttonAnimalMenuSection.addActionListener(new ActionListener() {
             @Override

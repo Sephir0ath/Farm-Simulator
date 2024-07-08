@@ -56,6 +56,10 @@ public class PanelPrincipal extends JPanel {
         add(panelMenu, BorderLayout.EAST);
     }
 
+    /**
+     * Método getter para obtener el array de logros.
+     * @return AbstractList de logros.
+     */
     public static AbstractList<Achievement> getAchievements() {
         return achievements.getAchievements();
     }

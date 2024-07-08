@@ -1,6 +1,5 @@
 package Logic;
 
-
 import java.util.ArrayList;
 
 /**
@@ -18,7 +17,6 @@ public class Achievements {
         achievements.add(new AWholeCity());
         achievements.add(new FirstHabitatUpgrade());
         achievements.add(new FirstDepositoUpgrade());
-        achievements.add(new IHaveThemAll());
         achievements.add(new Millionaire());
         achievements.add(new Thrifty());
         achievements.add(new Golden());

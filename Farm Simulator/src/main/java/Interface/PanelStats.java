@@ -22,7 +22,6 @@ public class PanelStats extends JPanel {
         super();
         setLayout(new GridLayout(1, 4));
         setPreferredSize(new Dimension(1188,50));
-
         panelMoney = new PanelStatsText("dinero", playerInfo, 0);
         panelAnimalQuantity = new PanelStatsText("animales", playerInfo, 1);
         panelFoodQuantity = new PanelStatsText("comida", playerInfo, 3);

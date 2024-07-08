@@ -6,6 +6,7 @@ import Interface.*;
  * Clase que representa el logro que se completa al comprar la primera mejora de habitat.
  */
 public class FirstHabitatUpgrade extends Achievement {
+
     /**
      * Constructor que le asigna nombre al logro.
      */

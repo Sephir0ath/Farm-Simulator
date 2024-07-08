@@ -1,6 +1,6 @@
 package Logic;
 
-/*
+    /*
     Stats[0] es el dinero
     Stats[1] es la cantidad de Animales
     Stats[2] es la cantidad de Habitats
@@ -18,6 +18,10 @@ public class PlayerInfo {
     private static PlayerInfo instance;
     private int MAX_MONEY = 50000;
     private final ArrayList<ObserverInterface> observers;
+
+    /**
+     * Método constructor de la clase, inicializa las variables.
+     */
     public PlayerInfo(){
         stats = new double[5];
         stats[0] = 5550;
@@ -25,6 +29,10 @@ public class PlayerInfo {
         observers = new ArrayList<>();
     }
 
+    /**
+     * Singletón que retorna una única instancia de jugador.
+     * @return instancia única.
+     */
     public static PlayerInfo getInstance() {
         if (instance == null) {
             instance = new PlayerInfo();

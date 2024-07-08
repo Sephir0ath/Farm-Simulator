@@ -1,10 +1,10 @@
 package Logic;
 
-
 /**
  * Clase que representa el logro que se completa al tener ahorrados $50.000.
  */
 public class Thrifty extends Achievement {
+
     /**
      * Constructor que asigna el nombre del logro.
      */

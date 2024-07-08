@@ -12,7 +12,7 @@ public class FoodDeposit {
     private FoodTypes depositType;
 
     /**
-     * Metodo constructor, crea el deposito para guardar la comida, por defecto este se crea tipo nulo
+     * Método constructor, crea el deposito para guardar la comida, por defecto este se crea tipo nulo
      */
     public FoodDeposit(){
         this.foodInDeposit = new ArrayList<>();

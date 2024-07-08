@@ -13,7 +13,7 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Clase que extiende de JButton, define la accion de los botones de comida
+ * Clase que extiende de JButton, define la acción de los botones de comida.
  */
 public class FoodBuyButton extends JButton {
     private ScheduledExecutorService scheduler;
@@ -23,7 +23,7 @@ public class FoodBuyButton extends JButton {
     private static boolean firstGolden;
 
     /**
-     * Metodo constructor, asigna un tipo de boton segun la comida y activa el selection mode para agregar la comida
+     * Método constructor, asigna un tipo de boton segun la comida y activa el selection mode para agregar la comida
      * comprada al habitat en caso de ser posible
      * @param foodType de tipo FoodType, servira para saber el alimento que se comprara
      */

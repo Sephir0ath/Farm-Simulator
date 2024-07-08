@@ -7,7 +7,7 @@ public class AchievementsWindow extends JFrame {
     private PanelAchievements achievements;
     public AchievementsWindow() {
         setTitle("Achievements");
-        setSize(300, 850);
+        setSize(300, 735);
         achievements = new PanelAchievements();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);

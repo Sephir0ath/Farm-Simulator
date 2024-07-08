@@ -31,6 +31,10 @@ public class PanelCheats extends JPanel {
         resetEverything.setIcon(new ImageIcon(getClass().getClassLoader().getResource("buttonCheat3.png")));
 
         addMoneyToPlayer.addActionListener(new ActionListener() {
+            /**
+             * Método que designa el evento cuando se presiona el botón de añadir dinero.
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 PlayerInfo.getInstance().addToStat(0, 1000);
@@ -39,6 +43,10 @@ public class PanelCheats extends JPanel {
         });
 
         resetAllHabitats.addActionListener(new ActionListener() {
+            /**
+             * Método que designa el evento cuando se presiona el botón de resetear los habitats.
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (int i = 0; i < PanelGame.getInstance().getHabitats().size(); i++){
@@ -48,6 +56,10 @@ public class PanelCheats extends JPanel {
         });
 
         resetEverything.addActionListener(new ActionListener() {
+            /**
+             * Método que designa el evento cuando se presiona el botón de resetear todo.
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (int i = 0; i < PanelGame.getInstance().getHabitats().size(); i++){

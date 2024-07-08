@@ -9,7 +9,7 @@ public class HitboxDeposit {
     private Rectangle hitbox;
     private boolean isVisible;
     /**
-     * Metodo construcor, crea Rectangle que es la hitbox
+     * Metodo constructor, crea Rectangle que es la hitbox
      * @param habitat de tipo Point, contiene la posicion del habitat correspondiente
      */
     public HitboxDeposit(Point habitat) {

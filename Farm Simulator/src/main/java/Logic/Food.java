@@ -5,7 +5,7 @@ package Logic;
  */
 public abstract class Food {
     /**
-     * Metodo constructor, creacion de la comida
+     * Constructor, creación de la comida
      */
     public Food() {
     }

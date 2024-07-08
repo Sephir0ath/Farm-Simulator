@@ -9,6 +9,9 @@ import java.awt.*;
  * Clase que representa un JPanel, en este se encuentra el sub-menú para la compra de comida
  */
 public class PanelFoodBuyMenu extends JPanel {
+    /**
+     * Constructor de la clase, inicializa los botones.
+     */
     public PanelFoodBuyMenu(){
         super();
         setPreferredSize(new Dimension(228,517));

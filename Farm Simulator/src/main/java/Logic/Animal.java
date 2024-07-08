@@ -48,6 +48,9 @@ public abstract class Animal {
         return false;
     }
 
+    /**
+     * Método con el cual los animales ganan hambre.
+     */
     public void loseFood(){
         actualFood -= 1;
     }
@@ -116,6 +119,10 @@ public abstract class Animal {
         return ubicacion;
     }
 
+    /**
+     * Método que calcula el precio para vender un animal.
+     * @return int con el dinero que vale el animal.
+     */
     public int calculateSellValue(){
         return (int)(Instant.now().getEpochSecond() - horaCreado.getEpochSecond()) + getAnimalType().getPrice()/2;
     }

@@ -6,6 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
 
+/**
+ * Clase que representa el Panel que muestra los stats del depósito.
+ */
 public class PanelStatsDeposit extends JPanel{
     private final Point positionMouseToPanel;
     private JLayeredPane layeredPane;
@@ -17,6 +20,11 @@ public class PanelStatsDeposit extends JPanel{
     private FoodTypes depositType;
     private AnimalTypes habitatType;
 
+    /**
+     * Constructor de la clase, inicializa las variables.
+     * @param positionMouseToPanel posición del mouse en el panel.
+     * @param habitat Habitat donde está el deposito.
+     */
     public PanelStatsDeposit(Point positionMouseToPanel, Habitat habitat) {
         this.layeredPane = Window.frame().getLayeredPane();
         this.habitat = habitat;
@@ -29,6 +37,9 @@ public class PanelStatsDeposit extends JPanel{
         this.habitatType = habitat.getHabitatType();
     }
 
+    /**
+     * Método para crear el JLabel que contiene los stats del deposito.
+     */
     public void CreateInterfazDeposit() {
         this.setBounds((int) positionMouseToPanel.getX(), (int) positionMouseToPanel.getY()-47, 100, 100);
         layeredPane.add(this, JLayeredPane.POPUP_LAYER);
@@ -43,12 +54,19 @@ public class PanelStatsDeposit extends JPanel{
         layeredPane.repaint();
     }
 
+    /**
+     * Método para hacer desaparecer el Jlabel.
+     */
     public void removeInterfazDeposit() {
         layeredPane.remove(this);
         layeredPane.revalidate();
         layeredPane.repaint();
     }
 
+    /**
+     * Override de paintComponent, pinta el panel.
+     * @param g the <code>Graphics</code> object to protect
+     */
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
         g.drawImage(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("PanelStatsDeposit.png"))).getImage(), 0, 0, null);

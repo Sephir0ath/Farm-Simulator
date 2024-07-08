@@ -37,7 +37,6 @@ public class HitboxAnimal {
         return isVisible;
     }
 
-
     /**
      * Metodo encargado de activar la hitbox
      */

@@ -78,6 +78,10 @@ public class Habitat {
         return actualAnimalQuantity;
     }
 
+    /**
+     * Getter que obtiene la capacidad máxima actual del habitat.
+     * @return int MAX_CAPACITY del habitat.
+     */
     public int getAnimalQuantityLimit(){
         return MAX_CAPACITY;
     }
@@ -120,7 +124,9 @@ public class Habitat {
         return this.isActive;
     }
 
-    //todo Esta funcion colocarla en scheduler de PanelPrincipal cuando se implemente el vender animales
+    /**
+     * Ve si un habitat no tiene animales, si es así, se desactiva el habitat.
+     */
     public void checkAndDeactivateHabitatIfIsEmpty(){
         if (checkIsHabitatActive() && actualAnimalQuantity == 0){
             isActive = false;
@@ -136,10 +142,17 @@ public class Habitat {
         return this.actualAnimalQuantity == MAX_CAPACITY;
     }
 
+    /**
+     * Método que revisa si el deposito de un habitat está lleno.
+     * @return boolean que indica si está lleno o no.
+     */
     public boolean checkIfDepositIsFull(){
         return this.foodDeposit.getActualFoodInDeposit() == MAX_FOOD;
     }
 
+    /**
+     * Método para realizar el reseteo total de los habitats.
+     */
     public void fullReset(){
         isActive = false;
         actualAnimalQuantity = 0;
@@ -150,10 +163,19 @@ public class Habitat {
         PlayerInfo.getInstance().setStats(3, 0);
     }
 
+    /**
+     * Setter que indica si el habitat está activo.
+     */
     public void setActive(){
         this.isActive = true;
     }
 
+    /**
+     * Método para añadir un animal al habitat al comprarlo.
+     * @param animal animal a añadir
+     * @throws FullCapacityException cuando está lleno el habitat.
+     * @throws AnimalTypeDifferentFromHabitatTypeException cuando el animal no pertenece al habitat.
+     */
     public void addAnimalToHabitat(Animal animal) throws FullCapacityException, AnimalTypeDifferentFromHabitatTypeException {
         if (checkIfAnimalCorrespondsToHabitat(animal)){
             if (!checkIfHabitatIsFull()) {
@@ -199,6 +221,10 @@ public class Habitat {
         }
     }
 
+    /**
+     * Método para borrar un animal.
+     * @param animal animal que eliminará.
+     */
     public void deleteAnimal(Animal animal){
         if (animalsInTheHabitat.contains(animal)){
             animalsInTheHabitat.remove(animal);
@@ -206,10 +232,16 @@ public class Habitat {
         }
     }
 
+    /**
+     * Método para incrementar el límite de capacidad del habitat.
+     */
     public void increaseAnimalLimit(){
         this.MAX_CAPACITY++;
     }
 
+    /**
+     * Método para incrementar el límite de comida de un deposito de habitat.
+     */
     public void increaseMaxFoodLimit(){
         this.MAX_FOOD += 10;
     }
@@ -222,6 +254,10 @@ public class Habitat {
         return foodDeposit;
     }
 
+    /**
+     * Getter que obtiene la comida maxima del deposito,
+     * @return int MAX_FOOD comida maxima posible del deposito
+     */
     public int getFoodReserve(){
         return MAX_FOOD;
     }
@@ -242,6 +278,10 @@ public class Habitat {
         return this.hitboxDeposit;
     }
 
+    /**
+     * Método para obtener logo AWholeFamily: si hay 5 animales en un habitat.
+     * @return boolean que indica si se completó o no.
+     */
     public static boolean getFamily() {
         return family;
     }

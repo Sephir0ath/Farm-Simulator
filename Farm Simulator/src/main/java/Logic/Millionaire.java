@@ -4,6 +4,7 @@ package Logic;
  * Clase que representa el logro que se completa al acumular $100.000.
  */
 public class Millionaire extends Achievement {
+
     /**
      * Constructor que asigna el nombre del logro.
      */

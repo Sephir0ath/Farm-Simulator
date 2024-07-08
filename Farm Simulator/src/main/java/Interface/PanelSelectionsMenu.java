@@ -7,11 +7,11 @@ import java.awt.*;
  * Clase la cual se encarga de mostrar cierto panel al presionar un botón en especifico
  */
 public class PanelSelectionsMenu extends JPanel {
+    private static PanelSelectionsMenu instance;
     private PanelAnimalBuyMenu panelAnimalBuyMenu;
     private PanelFoodBuyMenu panelFoodBuyMenu;
     private PanelCheats panelCheats;
     private JPanel panelDefault;
-    private static PanelSelectionsMenu instance;
     private CardLayout cardLayout;
     private PanelUpgrades panelUpgrades;
 

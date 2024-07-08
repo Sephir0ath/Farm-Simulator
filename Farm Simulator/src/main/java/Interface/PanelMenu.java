@@ -17,7 +17,6 @@ public class PanelMenu extends JPanel {
     public PanelMenu(){
         super();
         setLayout(new BorderLayout());
-
         panelSelectionsMenu = new PanelSelectionsMenu();
         panelSelections = new PanelSelections();
         add(panelSelectionsMenu, BorderLayout.CENTER);

@@ -15,12 +15,12 @@ public class AnimalTradeButton extends JButton{
     private PanelAnimalStats panelanimalstats;
     private Habitat habitat;
     /**
-     * Metodo constructor
-     * @param text
-     * @param panelanimalstats
-     * @param animal
-     * @param habitat
-     * @param hitboxAnimal
+     * Metodo constructor de la clase.
+     * @param text que tendrá el botón.
+     * @param panelanimalstats el panel de los stats del animal.
+     * @param animal el animal a vender.
+     * @param habitat el habitat donde está el animal.
+     * @param hitboxAnimal la hitbox del animal.
      */
     public AnimalTradeButton(String text, PanelAnimalStats panelanimalstats, Animal animal, Habitat habitat, Rectangle hitboxAnimal) {
         this.panelanimalstats = panelanimalstats;

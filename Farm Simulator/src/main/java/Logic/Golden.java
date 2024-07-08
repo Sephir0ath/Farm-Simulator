@@ -5,7 +5,8 @@ import Interface.*;
 /**
  * Clase que representa el logro que se completa al comprar la primera fruta dorada.
  */
-public class Golden extends Achievement{
+public class Golden extends Achievement {
+
     /**
      * Constructor que asigna el nombre del logro.
      */

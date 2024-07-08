@@ -1,6 +1,5 @@
 package Logic;
 
-
 /**
  * Clase abstracta que representa un logro.
  */

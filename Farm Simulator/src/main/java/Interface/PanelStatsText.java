@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Clase que representa un JPanel con información sobre cierta estadistica de un jugador
+ * Clase que representa un JPanel con información sobre cierta estadistica de un jugador.
  */
 public class PanelStatsText extends JPanel {
     private String statDescription;

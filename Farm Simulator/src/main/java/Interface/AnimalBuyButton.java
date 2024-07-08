@@ -19,6 +19,11 @@ public class AnimalBuyButton extends JButton {
     private Animal animal;
     private AnimalTypes typeOfAnimal;
     private boolean isThisButtonPressed;
+
+    /**
+     * Constructor de la clase, inicializa los botones según el animal que se indique, creando la instancia de este.
+     * @param animalType
+     */
     public AnimalBuyButton(AnimalTypes animalType){
         super(animalType.getAnimal() + " " + animalType.getPrice() + "$");
         typeOfAnimal = animalType;
@@ -67,7 +72,30 @@ public class AnimalBuyButton extends JButton {
             }
         });
     }
+
+    /**
+     * Override de paintComponent, pinta el botón de acuerdo al animal al que corresponde.
+     * @param g the <code>Graphics</code> object to protect
+     */
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        if (typeOfAnimal == AnimalTypes.VACAS) {
+            g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("buttonVaca.png")).getImage(), 0, 0, null);
+        }
+        else if (typeOfAnimal == AnimalTypes.GALLINA) {
+            g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("buttonGallina.png")).getImage(), 0, 0, null);
+        }
+        else if (typeOfAnimal == AnimalTypes.CERDO) {
+            g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("buttonCerdo.png")).getImage(), 0, 0, null);
+        }
+        else if (typeOfAnimal == AnimalTypes.CABRA) {
+            g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("buttonCabra.png")).getImage(), 0, 0, null);
+        }
+        else if (typeOfAnimal == AnimalTypes.OVEJA) {
+            g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("buttonOveja.png")).getImage(), 0, 0, null);
+        }
+        else if (typeOfAnimal == AnimalTypes.CABALLO) {
+            g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("buttonCaballo.png")).getImage(), 0, 0, null);
+        }
     }
 }

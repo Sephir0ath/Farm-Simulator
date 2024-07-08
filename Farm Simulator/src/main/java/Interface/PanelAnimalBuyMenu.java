@@ -9,7 +9,9 @@ import java.awt.*;
  * Clase que representa un JPanel, en este se encuentra el sub-menú para la compra de animales
  */
 public class PanelAnimalBuyMenu extends JPanel {
-    private CowButton cowButton;
+    /**
+     * Constructor de la clase, inicializa los botones de los animales.
+     */
     public PanelAnimalBuyMenu(){
         super();
         setPreferredSize(new Dimension(228,515));
