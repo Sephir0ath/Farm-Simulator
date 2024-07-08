@@ -7,9 +7,9 @@ import java.awt.*;
 public class PanelAnimalStats extends JPanel {
     private Point positionMouseToPanel;
     private Timer timer;
-    protected JLayeredPane layeredPane;
-    protected Rectangle hitboxanimal;
-    protected Animal animal;
+    public JLayeredPane layeredPane;
+    public Rectangle hitboxanimal;
+    public Animal animal;
 
     public PanelAnimalStats(Rectangle hitboxanimal, Point positionMouseToPanel, Animal animal) {
         this.layeredPane = Window.frame().getLayeredPane();

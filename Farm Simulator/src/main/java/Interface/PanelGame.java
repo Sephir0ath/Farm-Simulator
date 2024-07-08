@@ -15,6 +15,7 @@ public class PanelGame extends JPanel {
     private static boolean selectionMode;
     private PanelHabitat clickedHabitat;
     private final Cielo cielo;
+    private static PanelAnimalStats panelanimalstats = null;
     public PanelGame(){
         super();
         habitats = new ArrayList<>();
@@ -104,6 +105,39 @@ public class PanelGame extends JPanel {
         for (int i = 0; i < habitats.size(); i++){
             getHabitats().get(i).updateAnimalMovements();
         }
+    }
+
+    public void cursorIsOnHitbox(Rectangle hitbox, Animal animal){
+        Timer timer = new Timer(500, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Point mouseLocationRelativeToPanel = PanelGame.getInstance().getMousePosition();
+                if (mouseLocationRelativeToPanel != null) {
+                    // Aparecer panel
+                    if (hitbox.contains(mouseLocationRelativeToPanel) && PanelGame.getInstance().contains(mouseLocationRelativeToPanel)) {
+                        if (panelanimalstats == null) {
+                            panelanimalstats = new PanelAnimalStats(hitbox, mouseLocationRelativeToPanel, animal);
+                            panelanimalstats.CreateInterfazAnimal();
+                        }
+                    }
+                    // Remover panel solo si el cursor no está sobre el hitbox o el panel
+                    else {
+                        if (panelanimalstats != null) {
+                            Rectangle panelBounds = panelanimalstats.getBounds();
+                            panelBounds.translate(0, -47);  //6, 29
+                            Point panelLocation = panelBounds.getLocation();
+                            panelBounds.setLocation(panelLocation);
+
+                            if (!hitbox.contains(mouseLocationRelativeToPanel) && !panelBounds.contains(mouseLocationRelativeToPanel)) {
+                                panelanimalstats.removeInterfazAnimal();
+                                panelanimalstats = null;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        timer.start();
     }
 
     protected void paintComponent(Graphics g){
