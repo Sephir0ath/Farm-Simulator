@@ -6,6 +6,7 @@ import java.awt.*;
 public class PanelBuyMenu extends JPanel {
     private PanelAnimalBuyMenu panelAnimalBuyMenu;
     private PanelFoodBuyMenu panelFoodBuyMenu;
+    private PanelCheats panelCheats;
     private JPanel panelDefault;
     private static PanelBuyMenu instance;
     private CardLayout cardLayout;
@@ -14,6 +15,7 @@ public class PanelBuyMenu extends JPanel {
         super();
         this.panelAnimalBuyMenu = new PanelAnimalBuyMenu();
         this.panelFoodBuyMenu = new PanelFoodBuyMenu();
+        this.panelCheats = new PanelCheats();
         this.cardLayout = new CardLayout();
         this.panelDefault = new JPanel();
         panelDefault.setBackground(Color.GRAY);
@@ -23,6 +25,7 @@ public class PanelBuyMenu extends JPanel {
         this.add(panelDefault, "Nothing");
         this.add(panelAnimalBuyMenu, "Animals");
         this.add(panelFoodBuyMenu, "Food");
+        this.add(panelCheats, "Cheats");
     }
 
     public void showPanel(String panelName){

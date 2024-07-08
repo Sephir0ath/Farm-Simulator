@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PanelSelections extends JPanel {
-    private JButton buttonHabitatMenuSection;
+    private JButton buttonCheatsMenuSection;
     private JButton buttonAnimalMenuSection;
     private JButton buttonFoodMenuSection;
     private JButton buttonGoBack;
@@ -17,7 +17,7 @@ public class PanelSelections extends JPanel {
         this.setLayout(new GridLayout(2, 2));
         this.setBackground(Color.GRAY);
 
-        buttonHabitatMenuSection = new JButton("Habitats");
+        buttonCheatsMenuSection = new JButton("Cheats");
         buttonAnimalMenuSection = new JButton("Animales");
         buttonFoodMenuSection = new JButton("Comida");
         buttonGoBack = new JButton("Volver");
@@ -44,10 +44,17 @@ public class PanelSelections extends JPanel {
             }
         });
 
+        buttonCheatsMenuSection.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PanelBuyMenu.getInstance().showPanel("Cheats");
+            }
+        });
+
 
 
         this.add(buttonAnimalMenuSection);
-        this.add(buttonHabitatMenuSection);
+        this.add(buttonCheatsMenuSection);
         this.add(buttonFoodMenuSection);
         this.add(buttonGoBack);
     }

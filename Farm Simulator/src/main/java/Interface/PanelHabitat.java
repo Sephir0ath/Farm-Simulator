@@ -13,7 +13,7 @@ public class PanelHabitat extends JPanel {
         habitat = new Habitat();
     }
 
-    public Habitat getHabitat(){
+    public Habitat getLogicHabitat(){
         return habitat;
     }
 
@@ -27,8 +27,8 @@ public class PanelHabitat extends JPanel {
     }
 
     public void updateAnimalMovements(){
-        for (int j = 0; j < getHabitat().getAnimalsInTheHabitat().size(); j++) {
-            getHabitat().getAnimalsInTheHabitat().get(j).randomMovement();
+        for (int j = 0 ; j <  getLogicHabitat().getAnimalsInTheHabitat().size(); j++) {
+            getLogicHabitat().getAnimalsInTheHabitat().get(j).randomMovement();
         }
     }
 

@@ -54,12 +54,15 @@ public class PanelGame extends JPanel {
         return instance;
     }
 
+
     public void setClickedHabitat(Point mouseLocation){
         int row = (int) mouseLocation.getY() / (this.getHeight() / 4);
         int col = (int) mouseLocation.getX() / (this.getWidth() / 3);
 
         int index = (row - 1) * 3 + col; // Encontrar en qué index del arrayList está el habitat que se presionar
-        clickedHabitat = getHabitats().get(index);
+        if (index >= 0) { // Manejando solo los casos en donde hay habitats e ignorando las celdas de fondo
+            clickedHabitat = getHabitats().get(index);
+        }
     }
 
     public PanelHabitat getClickedHabitat(){

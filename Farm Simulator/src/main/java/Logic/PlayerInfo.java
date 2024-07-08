@@ -4,10 +4,10 @@ package Logic;
  * Clase que representa a un Jugador, esta guarda la cantidad de dinero que tiene el Usuario
  */
 public class PlayerInfo {
-    private final int[] stats;
+    private final double[] stats;
     private static PlayerInfo instance;
     public PlayerInfo(){
-        stats = new int[4];
+        stats = new double[4];
         stats[0] = 5550;
         instance = this;
     }
@@ -26,11 +26,15 @@ public class PlayerInfo {
     Stats[3] es la comida total
     Hecho para no tener una clase gigante de getters y setters (puede estar sujeto a cambios)
      */
-    public int getStats(int index){
+    public double getStats(int index){
         return stats[index];
     }
 
-    public void setStat(int index, int quantity){
+    public void addToStat(int index, double quantity){
         stats[index] += quantity;
+    }
+
+    public void setStats(int index, double quantity){
+        stats[index] = quantity;
     }
 }
