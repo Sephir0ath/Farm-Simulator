@@ -57,8 +57,14 @@ public class FoodBuyButton extends JButton {
                                     food = new Corn();
                                     break;
                                 case FRUTA_DORADA:
-                                    food = new GoldenFruit();
-                                    firstGolden = true;
+                                    food = null;
+                                    if (!(PanelGame.getInstance().getClickedHabitat().getLogicHabitat().getHabitatType() == null)){
+                                        for (int i = 0; i < PanelGame.getInstance().getClickedHabitat().getLogicHabitat().getAnimalQuantity(); i++){
+                                            PanelGame.getInstance().getClickedHabitat().getLogicHabitat().getAnimalsInTheHabitat().get(i).setActualFood(20);
+                                        }
+                                        PlayerInfo.getInstance().addToStat(0, -FoodTypes.FRUTA_DORADA.getPrice());
+                                    }
+
                                     break;
                             }
                             PanelGame.getInstance().getClickedHabitat().getLogicHabitat().addFoodToDeposit(food);
@@ -83,7 +89,7 @@ public class FoodBuyButton extends JButton {
                     }
                 }
             }
-        }, 0, 10, TimeUnit.MILLISECONDS);
+        }, 0, 50, TimeUnit.MILLISECONDS);
 
         this.addActionListener(new ActionListener() {
             @Override

@@ -64,6 +64,13 @@ public abstract class Animal {
     }
 
     /**
+     * Función que setea la comida actual del animal al valor proporcionado
+     */
+    public void setActualFood(int value){
+        actualFood = value;
+    }
+
+    /**
      * Función abstracta, cada animal da una cantidad especifica de dinero al jugador
      */
     public abstract void giveMoneyEachSecond();
