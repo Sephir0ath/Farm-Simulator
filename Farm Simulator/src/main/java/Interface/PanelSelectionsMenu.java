@@ -20,6 +20,7 @@ public class PanelSelectionsMenu extends JPanel {
      */
     public PanelSelectionsMenu(){
         super();
+        setPreferredSize(new Dimension(228,515));
         setOpaque(false);
         cardLayout = new CardLayout();
         setLayout(cardLayout);

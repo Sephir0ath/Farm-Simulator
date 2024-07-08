@@ -4,6 +4,7 @@ import Logic.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.AbstractList;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -17,7 +18,7 @@ public class PanelPrincipal extends JPanel {
     private PanelStats panelStats;
     private PanelMenu panelMenu;
     private PanelGame panelGame;
-    private Achievements achievements;
+    private static Achievements achievements;
 
     /**
      * Constructor de la clase, instancia los otros JPanels e inicia el Scheduler encargado de varios métodos del juego
@@ -53,5 +54,9 @@ public class PanelPrincipal extends JPanel {
         add(panelGame, BorderLayout.CENTER);
         add(panelStats, BorderLayout.NORTH);
         add(panelMenu, BorderLayout.EAST);
+    }
+
+    public static AbstractList<Achievement> getAchievements() {
+        return achievements.getAchievements();
     }
 }

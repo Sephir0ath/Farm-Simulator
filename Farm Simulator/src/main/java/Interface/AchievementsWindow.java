@@ -1,18 +1,20 @@
 package Interface;
 
-
 import javax.swing.*;
 import java.awt.*;
 
 public class AchievementsWindow extends JFrame {
+    private PanelAchievements achievements;
     public AchievementsWindow() {
         setTitle("Achievements");
-        setSize(300, 600);
-        setLayout(new GridLayout(50,2));
+        setSize(300, 850);
+        achievements = new PanelAchievements();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
         setLocationRelativeTo(null);
         setVisible(true);
+
+        add(achievements);
     }
 }

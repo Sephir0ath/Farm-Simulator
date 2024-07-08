@@ -20,6 +20,7 @@ public class Habitat {
     private ArrayList<Animal> animalsInTheHabitat;
     private FoodDeposit foodDeposit;
     private HitboxDeposit hitboxDeposit;
+    private static boolean family;
 
     /**
      * Constructor de la clase, inicializa todos los parametros necesarios de un habitat
@@ -30,6 +31,7 @@ public class Habitat {
         this.animalsInTheHabitat = new ArrayList<>();
         this.habitatType = null;
         this.actualAnimalQuantity = 0;
+        family = false;
 
         ScheduledExecutorService eatScheduler = new ScheduledThreadPoolExecutor(1);
         eatScheduler.scheduleAtFixedRate(new Runnable() {
@@ -153,6 +155,9 @@ public class Habitat {
             if (!checkIfHabitatIsFull()) {
                 this.animalsInTheHabitat.add(animal);
                 this.actualAnimalQuantity += 1;
+                if (animalsInTheHabitat.size() >= 5) {
+                    family = true;
+                }
             }
             else {
                 throw new FullCapacityException();
@@ -204,12 +209,16 @@ public class Habitat {
     public int getFoodReserve(){
         return MAX_FOOD;
     }
-    
+
     public void setHitboxDeposit(HitboxDeposit hitboxDeposit){
         this.hitboxDeposit = hitboxDeposit;
     }
 
     public HitboxDeposit getHitboxDeposit(){
         return this.hitboxDeposit;
+    }
+
+    public static boolean getFamily() {
+        return family;
     }
 }

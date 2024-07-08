@@ -14,18 +14,14 @@ public class Achievements {
      */
     public Achievements() {
         achievements = new ArrayList<>();
+        achievements.add(new AWholeFamily());
+        achievements.add(new AWholeCity());
+        achievements.add(new FirstHabitatUpgrade());
+        achievements.add(new FirstDepositoUpgrade());
+        achievements.add(new IHaveThemAll());
         achievements.add(new Millionaire());
         achievements.add(new Thrifty());
-
-        /*
-        archivements.add(new FirstUpdate()); // Comprar primera update
-        archivements.add(new IHaveThemAll()); // After all these years Finally I have them all referencia gravity falls, haber comprado todos los tipos de animales una vez
-        archivements.add(new AWholeFamily()); // Llenar un habitat con 5 animales
-        archivements.add(new AWholeCity()); // Tener 45 animales
-        // Tener 100 animales
-        // Golden apple
-        archivements.add(new FirstDeal()); // Vender tu primer animal
-         */
+        achievements.add(new Golden());
     }
 
     /**
