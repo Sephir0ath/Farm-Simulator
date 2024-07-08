@@ -9,12 +9,13 @@ import java.util.Objects;
 import java.awt.event.*;
 
 public class PanelGame extends JPanel {
+    private static PanelAnimalStats panelanimalstats = null;
     private final ArrayList<PanelHabitat> habitats;
     private static PanelGame instance;
     private static boolean selectionMode;
     private PanelHabitat clickedHabitat;
     private final Cielo cielo;
-    private static PanelAnimalStats panelanimalstats = null;
+
     public PanelGame() {
         super();
         habitats = new ArrayList<>();
@@ -22,7 +23,7 @@ public class PanelGame extends JPanel {
         instance = this;
         selectionMode = false;
         clickedHabitat = null;
-        cielo = Cielo.getInstance();
+        cielo = new Cielo();
 
         JLabel cielo1 = new JLabel();
         JLabel cielo2 = new JLabel();
@@ -161,7 +162,6 @@ public class PanelGame extends JPanel {
         }
 
         for (PanelHabitat habitatPanel : habitats) {
-            // habitatPanel.paintHabitatBackground(g);
             habitatPanel.paintAnimals(g);
             habitatPanel.setHitbox();
             habitatPanel.paintFoodDeposits(g);
@@ -189,18 +189,5 @@ public class PanelGame extends JPanel {
                 }
             }
         }
-
-        /*g.setColor(Color.GREEN);
-        g.fillRect(0, 154, 322, 460);
-        g.setColor(Color.RED);
-        g.fillRect(322, 154, 322, 460);
-        g.setColor(Color.GREEN);
-        g.fillRect(644, 154, 322, 460);
-        g.setColor(Color.RED);
-        g.fillRect(0, 308, 966, 154);
-        g.setColor(Color.GREEN);
-        g.fillRect(322, 308, 322, 154);
-        g.setColor(Color.yellow);
-        g.fillRect(0, 0, 966, 614);*/
     }
 }

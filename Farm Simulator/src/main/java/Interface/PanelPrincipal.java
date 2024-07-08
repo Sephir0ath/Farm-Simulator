@@ -8,28 +8,36 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Clase principal del juego, en este JPanel se instancian y se añaden los paneles más importantes del juego
+ */
 public class PanelPrincipal extends JPanel {
     private ScheduledExecutorService repaintScheduler;
-    private ScheduledExecutorService moneyScheduler;
     private PlayerInfo playerInfo;
     private PanelStats panelStats;
     private PanelMenu panelMenu;
     private PanelGame panelGame;
+    private Achievements achievements;
 
+    /**
+     * Constructor de la clase, instancia los otros JPanels e inicia el Scheduler encargado de varios métodos del juego
+     */
     public PanelPrincipal(){
         super();
-        this.setLayout(new BorderLayout());
+        setLayout(new BorderLayout());
+        achievements = new Achievements();
         playerInfo = new PlayerInfo();
+        playerInfo.addObserver(new ObserverAchievements(this.achievements));
         panelGame = new PanelGame();
         panelStats = new PanelStats(playerInfo);
-        panelMenu = new PanelMenu(playerInfo);
-
-        this.add(panelGame, BorderLayout.CENTER);
-        this.add(panelStats, BorderLayout.NORTH);
-        this.add(panelMenu, BorderLayout.EAST);
+        panelMenu = new PanelMenu();
 
         repaintScheduler = new ScheduledThreadPoolExecutor(1);
         repaintScheduler.scheduleAtFixedRate(new Runnable() {
+            /**
+             * Scheduler encargado de ejecutar el movimiento de los animales, la ganancia de dinero
+             * y la actualización de estadisticas del jugador en pantalla
+             */
             @Override
             public void run() {
                 panelStats.updateStatsPanels(playerInfo);
@@ -40,6 +48,10 @@ public class PanelPrincipal extends JPanel {
                 Window.frame().repaint();
 
             }
-        }, 0, 200, TimeUnit.MILLISECONDS);
+        }, 0, 150, TimeUnit.MILLISECONDS);
+
+        add(panelGame, BorderLayout.CENTER);
+        add(panelStats, BorderLayout.NORTH);
+        add(panelMenu, BorderLayout.EAST);
     }
 }

@@ -51,10 +51,8 @@ public class PanelCheats extends JPanel {
                 PlayerInfo.getInstance().setStats(0, 5500);
             }
         });
-
-        this.add(addMoneyToPlayer);
-        this.add(resetAllHabitats);
-        this.add(resetEverything);
-
+        add(addMoneyToPlayer);
+        add(resetAllHabitats);
+        add(resetEverything);;
     }
 }

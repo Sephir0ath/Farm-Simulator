@@ -21,9 +21,9 @@ public class AnimalBuyButton extends JButton {
     private boolean isThisButtonPressed;
     public AnimalBuyButton(AnimalTypes animalType){
         super(animalType.getAnimal() + " " + animalType.getPrice() + "$");
-        this.typeOfAnimal = animalType;
-        this.isThisButtonPressed = false;
-        this.scheduler = new ScheduledThreadPoolExecutor(1);
+        typeOfAnimal = animalType;
+        isThisButtonPressed = false;
+        scheduler = new ScheduledThreadPoolExecutor(1);
         scheduler.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {

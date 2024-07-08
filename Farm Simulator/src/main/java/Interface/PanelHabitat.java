@@ -33,17 +33,6 @@ public class PanelHabitat extends JPanel {
         }
     }
 
-    /*protected void paintHabitatBackground(Graphics g){
-        g.setColor(new Color(106, 175, 106));
-        g.fillRect((int)this.getLocationOfHabitat().getX(),(int)this.getLocationOfHabitat().getY() , this.getWidth(), this.getHeight());
-        g.setColor(Color.black);
-        g.fillRect((int)this.getLocationOfHabitat().getX() + this.getWidth()-2, (int)this.getLocationOfHabitat().getY(), 2, this.getHeight());
-        g.fillRect((int)this.getLocationOfHabitat().getX(), (int)this.getBottomRightLocationOfHabitat().getY(), (int)this.getBottomRightLocationOfHabitat().getX(), this.getHeight() );
-        if (habitat.checkIsHabitatActive()){
-            //todo pintar vallas de habitat
-        }
-    }*/
-
     public void setHitbox(){
         for (int j = 0; j < habitat.getAnimalsInTheHabitat().size(); j++) {
             Point location = habitat.getAnimalsInTheHabitat().get(j).getLocation();

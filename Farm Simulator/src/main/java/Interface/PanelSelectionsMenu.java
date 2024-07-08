@@ -21,20 +21,20 @@ public class PanelSelectionsMenu extends JPanel {
     public PanelSelectionsMenu(){
         super();
         setOpaque(false);
-        this.panelAnimalBuyMenu = new PanelAnimalBuyMenu();
-        this.panelFoodBuyMenu = new PanelFoodBuyMenu();
-        this.panelCheats = new PanelCheats();
-        this.cardLayout = new CardLayout();
-        this.panelDefault = new JPanel();
-        this.panelUpgrades = new PanelUpgrades();
-        this.setLayout(cardLayout);
+        panelAnimalBuyMenu = new PanelAnimalBuyMenu();
+        panelFoodBuyMenu = new PanelFoodBuyMenu();
+        panelUpgrades = new PanelUpgrades();
+        panelCheats = new PanelCheats();
+        cardLayout = new CardLayout();
+        panelDefault = new PanelDefault();
+        setLayout(cardLayout);
         instance = this;
 
-        this.add(panelDefault, "Nothing");
-        this.add(panelCheats, "Cheats");
-        this.add(panelFoodBuyMenu, "Food");
-        this.add(panelUpgrades, "Upgrades");
-        this.add(panelAnimalBuyMenu, "Animals");
+        add(panelDefault, "Nothing");
+        add(panelCheats, "Cheats");
+        add(panelFoodBuyMenu, "Food");
+        add(panelUpgrades, "Upgrades");
+        add(panelAnimalBuyMenu, "Animals");
     }
 
     /**
@@ -54,17 +54,5 @@ public class PanelSelectionsMenu extends JPanel {
             instance = new PanelSelectionsMenu();
         }
         return instance;
-    }
-
-
-    /**
-     * Metodo que pinta el fondo de este JPanel
-     * @param g Parametro tipo Graphics usado para dibujar los componentes
-     */
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.setColor(Color.BLUE);
-        g.fillRect(0, 0, getWidth(), getHeight());
     }
 }

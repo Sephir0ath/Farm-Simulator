@@ -30,5 +30,6 @@ public class Chicken extends Animal{
     @Override
     public void giveMoneyEachSecond() {
         PlayerInfo.getInstance().addToStat(0, this.getAnimalType().getMoneyDrop());
+        PlayerInfo.getInstance().addToStat(4, this.getAnimalType().getMoneyDrop());
     }
 }

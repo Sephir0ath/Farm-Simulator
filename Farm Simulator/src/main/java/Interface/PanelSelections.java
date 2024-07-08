@@ -61,15 +61,4 @@ public class PanelSelections extends JPanel {
         this.add(buttonFoodMenuSection);
         this.add(buttonUpgrades);
     }
-
-    /**
-     * Metodo que pinta el fondo del panel
-     * @param g Parametro tipo Graphics usado para dibujar los componentes
-     */
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.setColor(Color.BLUE);
-        g.fillRect(0, 0, getWidth(), getHeight());
-    }
 }
