@@ -164,6 +164,7 @@ public class PanelGame extends JPanel {
             // habitatPanel.paintHabitatBackground(g);
             habitatPanel.paintAnimals(g);
             habitatPanel.setHitbox();
+            habitatPanel.paintFoodDeposits(g);
         }
 
         if (selectionMode) {

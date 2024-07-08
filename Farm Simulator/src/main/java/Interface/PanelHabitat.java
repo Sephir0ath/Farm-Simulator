@@ -58,6 +58,11 @@ public class PanelHabitat extends JPanel {
         }
     }
 
+    public void paintFoodDeposits(Graphics g) {
+        Point location = this.getLocationOfHabitat();
+        g.drawImage(new ImageIcon(getClass().getClassLoader().getResource("DepositoComida.png")).getImage(), (int) location.getX() +3, (int) location.getY() +118, null);
+    }
+
     public void paintAnimals(Graphics g){
         for (int j = 0; j < habitat.getAnimalsInTheHabitat().size(); j++) {
             Point location = habitat.getAnimalsInTheHabitat().get(j).getLocation();
